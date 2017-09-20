@@ -39,6 +39,7 @@ public class StationDao {
 				String longI = rs.getString(6);
 				sList.add(new StationVO(idNum, csNm, addr, dpNm, lat, longI));
 			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
