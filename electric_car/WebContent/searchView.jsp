@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="utf-8"%>
 <%@page import="car.dto.MemberVO,java.util.*"%>
 <%@page import="java.util.ArrayList"%>
@@ -37,14 +37,14 @@ body {font-family: "Lato", sans-serif}
 </header>
 		<div style="width:350px; height:270px; float:left; display:inline-block;">
 			<div style="margin-top: 80px; padding-bottom: 10px;">
-			<form action = "./loc" method = "post"> 
+			<form action = "${pageContext.request.contextPath}/loc" method = "post"> 
 				<span style="font-weight: bolder;font: 14px; float:left; padding-left: 5px;">지역 선택</span>
 				<br style="line-height: 1.5;">
 				<select id="SI_DO" style="margin-left: 5px;" title="시도 선택" name="SI_DO">
 				<option value="">시도</option>
 				<option value="강원도">강원도</option>
 				<option value="경기">경기</option>
-				<option value="경상도">경상도</option>
+				<option value="경상">경상도</option>
 				<option value="광주광역시">광주광역시</option>
 				<option value="대구광역시">대구광역시</option>	
 				<option value="대전광역시">대전광역시</option>
@@ -61,9 +61,9 @@ body {font-family: "Lato", sans-serif}
 			</div>
 		<div class="search_box" style="float:left;">
  		<span style="font-weight: bolder;font: 14px; float:left; padding-left: 5px;">충전소 분류</span>
-			<form action = "./loc" method="post">
+			<form action = "${pageContext.request.contextPath}/loc" method="post">
 			<input type="hidden" name="command" value="csNm">	
-			<input type="text" name="search" id="STAT_NAME"
+			<input type="text" name=key_search id="STAT_NAME"
 				placeholder="검색어 입력해주세요." title="검색어를 입력바랍니다."
 				style="width: 150px; margin-top: 20px; margin-left: 5px; border: 1px solid #c0c0be;">
 			<input type="submit" value="조회">

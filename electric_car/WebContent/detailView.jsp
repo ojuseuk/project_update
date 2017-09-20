@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@page import="car.dto.MemberVO,java.util.*"%>
 <%@page import="java.util.ArrayList"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -27,8 +27,8 @@ body {font-family: "Lato", sans-serif}
   <div class="w3-bar w3-black w3-card-2">
     <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
     <a href="index.html" class="w3-bar-item w3-button w3-padding-large">HOME</a>
-    <a href="index.html#ch" class="w3-bar-item w3-button w3-padding-large w3-hide-small">ÃæÀü¼Ò</a>
-    <a href="index.html#car" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Àü±âÂ÷</a>
+    <a href="index.html#ch" class="w3-bar-item w3-button w3-padding-large w3-hide-small">ì¶©ì „ì†Œ</a>
+    <a href="index.html#car" class="w3-bar-item w3-button w3-padding-large w3-hide-small">ì „ê¸°ì°¨</a>
     <a href="index.html#contact" class="w3-bar-item w3-button w3-padding-large w3-hide-small">CONTACT</a>
     <a href="#map" class="w3-bar-item w3-button w3-padding-large w3-hide-small">MAP</a>
     
@@ -38,40 +38,40 @@ body {font-family: "Lato", sans-serif}
 		<div style="width:350px; height:270px; float:left; display:inline-block;">
 			<div style="margin-top: 80px; padding-bottom: 10px;">
 			<form action = "${pageContext.request.contextPath}/loc" method = "post"> 
-				<span style="font-weight: bolder;font: 14px; float:left; padding-left: 5px;">Áö¿ª ¼±ÅÃ</span>
+				<span style="font-weight: bolder;font: 14px; float:left; padding-left: 5px;">ì§€ì—­ ì„ íƒ</span>
 				<br style="line-height: 1.5;">
-				<select id="SI_DO" style="margin-left: 5px;" title="½Ãµµ ¼±ÅÃ" name="SI_DO">
-				<option value="">½Ãµµ</option>
-				<option value="°­¿øµµ">°­¿øµµ</option>
-				<option value="°æ±â">°æ±â</option>
-				<option value="°æ»óµµ">°æ»óµµ</option>
-				<option value="±¤ÁÖ±¤¿ª½Ã">±¤ÁÖ±¤¿ª½Ã</option>
-				<option value="´ë±¸±¤¿ª½Ã">´ë±¸±¤¿ª½Ã</option>	
-				<option value="´ëÀü±¤¿ª½Ã">´ëÀü±¤¿ª½Ã</option>
-				<option value="ºÎ»ê±¤¿ª½Ã">ºÎ»ê±¤¿ª½Ã</option>
-				<option value="¼­¿ïÆ¯º°½Ã">¼­¿ïÆ¯º°½Ã</option>
-				<option value="¿ï»ê±¤¿ª½Ã">¿ï»ê±¤¿ª½Ã</option>
-				<option value="Àü¶óµµ">Àü¶óµµ</option>
-				<option value="Á¦ÁÖµµ">Á¦ÁÖµµ</option>
-				<option value="ÃæÃ»³²µµ">ÃæÃ»³²µµ</option>
-				<option value="ÃæÃ»ºÏµµ">ÃæÃ»ºÏµµ</option>
+				<select id="SI_DO" style="margin-left: 5px;" title="ì‹œë„ ì„ íƒ" name="SI_DO">
+				<option value="">ì‹œë„</option>
+				<option value="ê°•ì›ë„">ê°•ì›ë„</option>
+				<option value="ê²½ê¸°">ê²½ê¸°</option>
+				<option value="ê²½ìƒ">ê²½ìƒë„</option>
+				<option value="ê´‘ì£¼ê´‘ì—­ì‹œ">ê´‘ì£¼ê´‘ì—­ì‹œ</option>
+				<option value="ëŒ€êµ¬ê´‘ì—­ì‹œ">ëŒ€êµ¬ê´‘ì—­ì‹œ</option>	
+				<option value="ëŒ€ì „ê´‘ì—­ì‹œ">ëŒ€ì „ê´‘ì—­ì‹œ</option>
+				<option value="ë¶€ì‚°ê´‘ì—­ì‹œ">ë¶€ì‚°ê´‘ì—­ì‹œ</option>
+				<option value="ì„œìš¸íŠ¹ë³„ì‹œ">ì„œìš¸íŠ¹ë³„ì‹œ</option>
+				<option value="ìš¸ì‚°ê´‘ì—­ì‹œ">ìš¸ì‚°ê´‘ì—­ì‹œ</option>
+				<option value="ì „ë¼ë„">ì „ë¼ë„</option>
+				<option value="ì œì£¼ë„">ì œì£¼ë„</option>
+				<option value="ì¶©ì²­ë‚¨ë„">ì¶©ì²­ë‚¨ë„</option>
+				<option value="ì¶©ì²­ë¶ë„">ì¶©ì²­ë¶ë„</option>
 				</select> 
-				<button type="submit" id="word_btn" style="width:10px; height:10px; margin-top:11px;"><img src="./images/reading_glass.gif" alt="Á¶È¸ ¹öÆ°"></button>
+				<button type="submit" id="word_btn" style="width:10px; height:10px; margin-top:11px;"><img src="./images/reading_glass.gif" alt="ì¡°íšŒ ë²„íŠ¼"></button>
 			</form>
 			</div>
 		<div class="search_box" style="float:left;">
- 		<span style="font-weight: bolder;font: 14px; float:left; padding-left: 5px;">ÃæÀü¼Ò ºÐ·ù</span>
+ 		<span style="font-weight: bolder;font: 14px; float:left; padding-left: 5px;">ì¶©ì „ì†Œ ë¶„ë¥˜</span>
 			<form action = "${pageContext.request.contextPath}/loc" method="post">
 			<input type="hidden" name="command" value="csNm">	
 			<input type="text" name="key_search" id="STAT_NAME"
-				placeholder="°Ë»ö¾î ÀÔ·ÂÇØÁÖ¼¼¿ä." title="°Ë»ö¾î¸¦ ÀÔ·Â¹Ù¶ø´Ï´Ù."
+				placeholder="ê²€ìƒ‰ì–´ ìž…ë ¥í•´ì£¼ì„¸ìš”." title="ê²€ìƒ‰ì–´ë¥¼ ìž…ë ¥ë°”ëžë‹ˆë‹¤."
 				style="width: 150px; margin-top: 20px; margin-left: 5px; border: 1px solid #c0c0be; ime-mode: active;">
-			<input type="submit" value="Á¶È¸">
+			<input type="submit" value="ì¡°íšŒ">
 			</form> 
 			<br style="line-height: 20px;">
 			<a href="#" class="bt_spot_detail"
 				style="background-color: #4C4C4C; color: white; top: 3px; left: 95px; margin-left: 5px;"
-				onclick="window.location.reload(true);">ÃÊ±âÈ­</a>
+				onclick="window.location.reload(true);">ì´ˆê¸°í™”</a>
 		</div>
 		</div>
 <div class="container" style="width:500px; height:200px; float:left; overflow:auto; margin-top:100px;">
@@ -80,9 +80,9 @@ body {font-family: "Lato", sans-serif}
 	 <thead>
 		<tr>
 			<td>ID</td>
-			<td>ÃæÀü¼Ò¸í</td>
-			<td>ÁÖ¼Ò</td>
-			<td>ÃæÀü±âÁ¾·ù</td>
+			<td>ì¶©ì „ì†Œëª…</td>
+			<td>ì£¼ì†Œ</td>
+			<td>ì¶©ì „ê¸°ì¢…ë¥˜</td>
 		</tr>
 	 </thead>
 		 <tbody>
@@ -114,7 +114,7 @@ body {font-family: "Lato", sans-serif}
 <input type="hidden" id="a" name="a" value="${st.getLat()}">
 <input type="hidden" id="b" name="b" value="${st.getLongi()}">
 
-<!-- ±¸±Û Áöµµ -->
+<!-- êµ¬ê¸€ ì§€ë„ -->
 <script>
 function myMap() {
 	var a=document.getElementById("a").value;
@@ -127,7 +127,7 @@ function myMap() {
 
 	}
 </script>
-<!-- ±¸±Û Áöµµ -->
+<!-- êµ¬ê¸€ ì§€ë„ -->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBjvtC_0Hr83DsKOtKr0oamgTdwyBtcuho&callback=myMap"></script>
 <!--
 To use this code on your website, get a free API key from Google.
@@ -173,8 +173,6 @@ function myFunction() {
 }
 
 </script>
-
-
 
 </body>
 </html>

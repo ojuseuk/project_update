@@ -35,7 +35,7 @@ body {
 					<option value="">시도</option>
 					<option value="강원도">강원도</option>
 					<option value="경기">경기</option>
-					<option value="경상도">경상도</option>
+					<option value="경상">경상도</option>
 					<option value="광주광역시">광주광역시</option>
 					<option value="대구광역시">대구광역시</option>
 					<option value="대전광역시">대전광역시</option>
