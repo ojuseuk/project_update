@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<h2>객체 타입 : 매우 중요한 문법</h2>
+	기본 타입은 하나의 값만을 보유 할 수 있으나, 참조 타입은 여러개의 property[변수]들을 포함 할 수 있음<br><br>
+	<font color="red">객체 기반 언어</font><br>
+	
+	1. 객채 생성 방법<br>
+		1.1 Object 생성자<br>
+		1.2 객체 리터럴 방식<br><br>
+	
+	2. 객체 property(속성, 변수) 동적으로 추가, 읽기/쓰기/갱신<br>
+	
+	3. 핵심 키워드 : 생성자, 리터럴 방식, property,  동적생성, delete, for in 주의사항 - []연산자
+	<script type="text/javascript">
+	
+	
+			console.log("--1. 객체 생성 : Object 생성자---")
+			var foo = new Object();//foo 객체 생성;생성하면 자연스럽게 부모가 붙는다. 
+			console.log(foo);//{}
+			
+			//동적변수추가
+			foo.name = "신동엽";
+			foo.age=50;
+			foo.gender="남성";
+			
+			//var data3 = {"name":"윤진님","age":"27","address":"구디" }
+			console.log(typeof foo);
+			console.log(foo);
+			console.log(foo.name);//신동엽
+			
+			
+			console.log("--------------------2.객체 리터럴 방식을 이용한 객체 생성---------");
+			var foo =  {name:"신동엽",age:"50",gender:"남성"};
+			console.log(foo);
+			console.log(foo.name);
+	
+			
+			console.log("--------------------3.property 동적 생성 및 읽기/쓰기");
+			foo.grade="VVIP";//생성
+			console.log(foo.grade);//읽기
+			console.log(foo["grade"]);
+			
+			foo.grade = "vip";//쓰기
+			console.log(foo.grade);//읽기
+			
+			delete foo.grade;//삭제도 가능 
+			console.log(foo.grade);//undefined
+			
+			console.log("-------------------4. for 문으로 property 값 활용-----");
+			var vData;
+			for(vData in foo){
+				console.log(vData,foo[vData]);//name 신동엽 age 50  gender 남성
+				//for in 반복문 내에서 필수 코드 - [] 연산자 활용하기 
+			}
+			
+			for(vData in foo){
+				console.log(vData,foo.vData);//name undefined : foo.vData 문법인 경우 반복문 내에서의 문제 야기: 무효한 데이터 
+				console.log(vData,foo.name);//정상실행
+			}
+			
+			
+	</script>
+
+</body>
+</html>
+
+
+
+
+
