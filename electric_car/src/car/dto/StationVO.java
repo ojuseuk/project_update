@@ -1,6 +1,7 @@
 package car.dto;
 
 public class StationVO {
+	
 	private int id;
 	private String csnm;
 	private String addr;

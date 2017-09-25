@@ -3,7 +3,6 @@ package controller;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -88,9 +87,18 @@ public class MemberController extends HttpServlet {
 
 		/** 수정한 부분 */
 		int num = LoginDAO.getInstance().loginCheck(id, password);
-
+		/** 만약 id가 admin이고 password가 1111이면 adminView.jsp로 이동한다  */
 		System.out.println(num);
-		if (num == 1) {
+		
+		if(num == 1){
+			
+			if (id.equals("admin")) {
+				HttpSession session = request.getSession();
+				session.setAttribute("id", id);
+				url = "adminView.jsp";
+			}
+			
+		}else if (num == 0) {
 			HttpSession session = request.getSession();
 			session.setAttribute("id", id);
 			url = "index.jsp";
