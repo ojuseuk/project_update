@@ -86,8 +86,10 @@ body {
 							분류</span>
 						<form action="${pageContext.request.contextPath}/loc"
 							method="post">
-							<input type="hidden" name="command" value="csNm">
-							<input type="text" name=key_search id="STAT_NAME" placeholder="검색어 입력해주세요." title="검색어를 입력바랍니다." style="width: 150px; margin-top: 20px; margin-left: 5px; border: 1px solid #c0c0be;">
+							<input type="hidden" name="command" value="csNm"> <input
+								type="text" name=key_search id="STAT_NAME"
+								placeholder="검색어 입력해주세요." title="검색어를 입력바랍니다."
+								style="width: 150px; margin-top: 20px; margin-left: 5px; border: 1px solid #c0c0be;">
 							<input type="submit" value="조회">
 						</form>
 						<br style="line-height: 20px;"> <a href="#"
@@ -100,7 +102,7 @@ body {
 			<br>
 			<div class="w3-container w3-light-grey w3-justify">
 				<h2>충전소</h2>
-				<div >
+				<div style="overflow: scroll;  height: 550px;">
 					<table class="table table-hover">
 						<thead>
 							<tr>
@@ -109,10 +111,10 @@ body {
 								<td>충전기종류</td>
 							</tr>
 						</thead>
-						<c:forEach items="${staList}" var="data" varStatus="i">
+						<c:forEach items="${list}" var="data" varStatus="i">
 							<tbody>
 								<tr>
-									<td><a href = "${pageContext.request.contextPath}/loc?command=csNm&key_search=${data.csnm}">${data.csnm}</a></td>
+									<td>${data.csnm}</td>
 									<td>${data.addr}</td>
 									<td>${data.cpnm}</td>
 								</tr>
@@ -123,9 +125,8 @@ body {
 								value="${data.lat}">
 							<input type="hidden" id="longi_${i.count}"
 								value="${data.longi}">
-							<input type="hidden" id="sido" value="${requestScope.map}">
 							<input type="hidden" id="cnt"
-								value="${requestScope.staList.size()}">
+								value="${requestScope.list.size()}">
 						</c:forEach>
 					</table>
 				</div>
@@ -133,7 +134,7 @@ body {
 		</div>
 	</div>
 	<jsp:include page="footer.jsp"/>
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAt7QvTZpfChoMvfXoB4MYDvIKfeyxZX8s&callback=meMap"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAt7QvTZpfChoMvfXoB4MYDvIKfeyxZX8s&callback=myMap"></script>
 	
 		<script>
 		// Automatic Slideshow - change image every 4 seconds

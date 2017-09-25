@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
+<head>
 <title>W3.CSS Template</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,7 +15,7 @@
 body {font-family: "Lato", sans-serif}
 .mySlides {display: none}
 </style>
-
+</head>
 <body>
 
 <!-- Navbar -->

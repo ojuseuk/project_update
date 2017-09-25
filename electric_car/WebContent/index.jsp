@@ -18,15 +18,17 @@ body {font-family: "Lato", sans-serif}
 
 <!-- 화면위의 목록을 다른 jsp에 넣어두고 불러옵니다. -->
 <jsp:include page="nav.jsp"/>
+
 <!-- Page content -->
-<div class="w3-content" style="max-width:2000px;margin-top:46px">
+<div class="w3-content" style="max-width:2000px; margin-top:46px">
 
   <!-- Automatic Slideshow Images -->
   <div class="mySlides w3-display-container w3-center">
     <img src="./images/car8.PNG" style="width:100%">
     <div class="w3-display-bottommiddle w3-container w3-text-black w3-padding-32 w3-hide-small">
       <h3>건강을 생각합니다</h3>
-      <p><b>자동차 배출 가스로부터 해방</b></p>   
+      <p><b>자동차 배출 가스로부터 해방</b></p>  
+      <a href="${pageContext.request.contextPath}/location/locationAdd.jsp" >충전소 추가</a> 
     </div>
   </div>
   <div class="mySlides w3-display-container w3-center">
@@ -53,7 +55,7 @@ body {font-family: "Lato", sans-serif}
       <div class="w3-third ">
     		 <div class="w3-third ">
         <p>충전소 찾기 이동</p>
-        <a href="Charging.jsp"><img src="./images/car4.PNG" class="w3-round w3-margin-bottom "  alt="Random Name" style="width:100%"></a>
+        <a href="${pageContext.request.contextPath}/loc?command=all"><img src="./images/car4.PNG" class="w3-round w3-margin-bottom "  alt="Random Name" style="width:100%"></a>
       	</div>
       </div>
     </div>

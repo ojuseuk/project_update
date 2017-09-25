@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import car.dto.StationVO;
 import car.util.DBUtil;
@@ -81,4 +82,38 @@ public class StationDao {
 		}
 		return st;
 	}
+
+	/** 충전소 위치를 지도에서 확인 하기위해 전체 목록을 가져오는 함수 
+	 * @throws SQLException */
+	public static List<StationVO> allList() throws SQLException {
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<StationVO> list = new ArrayList<>();
+		
+		try {
+			con = DBUtil.getConnection();
+			pstmt = con.prepareStatement("select * from station");
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+
+				list.add(new StationVO(rs.getInt(1), rs.getString(2), rs.getString(3), 
+						rs.getString(4), rs.getString(5), rs.getString(6)));
+			}
+			
+		} finally {
+			DBUtil.close(con, pstmt, rs);
+		}
+		
+		return list;
+	}
 }
+
+
+
+
+
+

@@ -29,15 +29,15 @@ public class DBUtil {
 	}
 
 	// select 자원반환
-	public static void close(Connection con, Statement stmt, ResultSet rset) {
+	public static void close(Connection con, Statement pstmt, ResultSet rs) {
 		try {
-			if (rset != null) {
-				rset.close();
-				rset = null;
+			if (rs != null) {
+				rs.close();
+				rs = null;
 			}
-			if (stmt != null) {
-				stmt.close();
-				stmt = null;
+			if (pstmt != null) {
+				pstmt.close();
+				pstmt = null;
 			}
 			if (con != null) {
 				con.close();
@@ -49,11 +49,11 @@ public class DBUtil {
 	}
 
 	// insert, update, delete
-	public static void close(Connection con, Statement stmt) {
+	public static void close(Connection con, Statement pstmt) {
 		try {
-			if (stmt != null) {
-				stmt.close();
-				stmt = null;
+			if (pstmt != null) {
+				pstmt.close();
+				pstmt = null;
 			}
 			if (con != null) {
 				con.close();
