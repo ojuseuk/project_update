@@ -23,6 +23,7 @@ function getXMLHttpRequest() {
 }
 
 function sendRequest(url, params, callback, method) {
+	alert("call");
 	httpRequest = getXMLHttpRequest();	
 	var httpMethod = method;	
 	if (httpMethod != 'GET' && httpMethod != 'POST') {

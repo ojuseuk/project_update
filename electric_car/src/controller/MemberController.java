@@ -83,7 +83,7 @@ public class MemberController extends HttpServlet {
 		// LoginDAO.getInstance();
 		/** 수정한 부분 */
 		MemberVO member = LoginDAO.getInstance().getUserInfo(id);
-
+		
 		// 개인정보를 확인해야 하기 때문에 id만 넘겨주는것이 아니라 아래처럼 memberVO 전체를 넘겨주어야 합니다.
 		// request.setAttribute("id", id);
 

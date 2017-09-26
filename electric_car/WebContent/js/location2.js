@@ -8,6 +8,8 @@ var marker
 function myMap() {
 	alert("myMap");
 	
+	if(typeof(document.getElementById("sido")) != 'undefinded'){
+		alert("my");
 	map = new google.maps.Map(document.getElementById("map"), {
 		zoom : 8,
 		center : {
@@ -15,8 +17,22 @@ function myMap() {
 			lng : 127.9265940,
 		}
 	});
+	}else {
+		alert("me");
+		var latLng = document.getElementById("sido").value.split("/");
+		alert(latLng[0] + " / " + latLng[1]);
+		
+		map = new google.maps.Map(document.getElementById("map"), {
+			zoom : 9,
+			center : {
+				lat : Number(latLng[0]),
+				lng : Number(latLng[1]),
+			}
+		});
+	}
 
 	var cnt = document.getElementById("cnt").value;
+	
 	for (var i = 0; i < cnt; i++) {
 		markerAddress(document.getElementById("lat_" + (i + 1)).value, document.getElementById("longi_" + (i + 1)).value);
 	}
@@ -24,6 +40,7 @@ function myMap() {
 
 function meMap() {
 	alert("meMap");
+	alert(document.getElementById("sido"));
 	// 한국 주요도시 위도 경도 0번째 - 위도 1번째 경도
 	var latLng = document.getElementById("sido").value.split("/");
 	alert(latLng[0] + " / " + latLng[1]);

@@ -3,7 +3,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%-- 
+<%
+	 String id = (String)request.getParameter("id");
+	 LoginDAO dao = LoginDAO.getInstance();
+	 MemberVO mem= dao.getUserInfo(id);
+%> --%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -132,6 +137,8 @@ html, body, h1, h2, h3, h4, h5, h6 {
 					</div>
 					<br><br><br><br>
 		<!-- End Right Column -->
+
+					<!-- End Right Column -->
 				</div>
 			</form>
 </body>
