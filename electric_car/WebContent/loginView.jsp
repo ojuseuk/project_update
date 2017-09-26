@@ -30,7 +30,7 @@ body {font-family: "Lato", sans-serif}
     
     <div class="w3-dropdown w3-hide-small w3-right">
     		 <!-- 경로 설정에 편하다 -->
-    <a href="${pageContext.request.contextPath}/logSc?command=info" class="w3-bar-item w3-button w3-padding-large w3-hide-small" >개인정보 수정</a>
+    <a href="${pageContext.request.contextPath}/logSc?command=info" class="w3-bar-item w3-button w3-padding-large w3-hide-small" >개인정보</a>
     <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-large w3-hide-small" onclick="logoutPro()">로그아웃</a>   
     </div>
   </div>

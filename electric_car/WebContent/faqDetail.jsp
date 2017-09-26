@@ -14,6 +14,44 @@
 <style>
 .w3-sidebar a {font-family: "Roboto", sans-serif}
 body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
+
+/** faqDetail 스타일 */
+
+#list {
+	background-color: #18bc9c;
+	color: white;
+}
+
+tr, td {
+	background-color: #18bc9c;
+	color: white;
+}
+
+.button {
+	background-color: #18bc9c; /* Green */
+	border-color: white;
+	border-width: 1px;
+	border-style: solid;
+	color: white;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	-webkit-transition-duration: 0.4s; /* Safari */
+	transition-duration: 0.4s;
+	cursor: pointer;
+}
+
+.button:hover {
+	background-color: white; /* Green */
+	border-color: white;
+	border-width: 1px;
+	border-style: solid;
+	color: #18bc9c;
+}
+
+
 </style>
 <body class="w3-content" style="max-width:1200px">
 
@@ -34,7 +72,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
       <a href="#" class="w3-bar-item w3-button w3-light-grey"><i class="fa fa-caret-right w3-margin-right"></i>삭제</a>
      
     </div>
-    <a href="faq.jsp" class="w3-bar-item w3-button">문의게시판</a>
+    <a href="/faq.jsp" class="w3-bar-item w3-button">문의게시판</a>
     <a href="#" class="w3-bar-item w3-button">자유게시판</a>
   
   </div>
@@ -61,14 +99,23 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
     </p>
   </header>
 
-  <!-- Image header -->
-  <div class="w3-display-container w3-container">
-    <img src="./images/ap.PNG" alt="전기차 충전소" style="width:100%">
-    <div class="w3-display-topleft w3-text-black" style="padding:24px 48px">
-      <h1 class="w3-hide-small">관리자 페이지</h1>
-     
-    </div>
-  </div>
+  <!-- faqDetail -->
+  <header class="masthead">
+	<div class="w3-container">
+		<table class="w3-table-all w3-hoverable">
+			<tr id = "list">
+				<td>제목</td>
+				<td>${f.FAQName }</td>
+			</tr>
+			<tr id = "list">
+				<td>내용</td>
+				<td><pre id = "list">${f.FAQContent }</pre></td>
+			</tr>
+		</table>
+		<br>
+		<a href="FAQ.do?command=getList"><button class = "button">목록으로</button></a>
+	</div>
+	</header>
 
  
   
