@@ -57,7 +57,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
     <p class="w3-left">전기차 충전소</p>
     <p class="w3-right">
       <i class="fa fa-car w3-margin-right"></i>
-     
+      <a href="javascript:void(0)"  onclick="logoutPro()"><i class="fa fa-remove w3-margin-right"></i></a>
     </p>
   </header>
 
@@ -107,6 +107,11 @@ function w3_close() {
     document.getElementById("myOverlay").style.display = "none";
 }
 </script>
-
+<!-- 로그아웃  -->
+<script>
+		function logoutPro(){
+			location.href="logoutPro.jsp";
+		}
+</script>
 </body>
 </html>
