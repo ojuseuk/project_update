@@ -3,14 +3,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%-- 
-<%
-	 String id = (String)request.getParameter("id");
-	 LoginDAO dao = LoginDAO.getInstance();
-	 MemberVO mem= dao.getUserInfo(id);
-%> --%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html>
@@ -28,6 +20,19 @@
 html, body, h1, h2, h3, h4, h5, h6 {
 	font-family: "Roboto", sans-serif
 }
+/** 버튼 스타일*/
+.button4 {
+    background-color: white;
+    color: black;
+    border: 2px solid #e7e7e7;
+    border-radius: 12px;
+}
+
+.button4:hover {background-color: #e7e7e7;}
+
+/** right */
+
+
 </style>
 </head>
 
@@ -47,9 +52,8 @@ html, body, h1, h2, h3, h4, h5, h6 {
 							<img src="./images/ap.PNG" style="width: 100%" alt="Avatar">
 
 							<div class="w3-display-bottomleft w3-container w3-text-black">
-								<input type="text" value="${requestScope.member.id}"
-									disabled="disabled"> <input type="hidden"
-									value="${requestScope.member.id}" name="id">
+								<input type="text" value="${requestScope.member.id}" disabled="disabled"> 
+								<input type="hidden" value="${requestScope.member.id}" name="id">
 							</div>
 						</div>
 						<div class="w3-container">
@@ -59,12 +63,12 @@ html, body, h1, h2, h3, h4, h5, h6 {
 							</p>
 							<p>
 								<i class="fa fa-smile-o fa-fw w3-margin-right w3-large w3-text-teal"></i>
-								<input type="text" value="${requestScope.member.name}" disabled="disabled"> <input type="hidden" value="${requestScope.member.name}" name="name">
+								<input type="text" value="${requestScope.member.name}" disabled="disabled"> 
+								<input type="hidden" value="${requestScope.member.name}" name="name">
 							</p>
 							<p>
-								<i
-									class="fa fa-envelope-o fa-fw w3-margin-right w3-large w3-text-teal"></i><input
-									type="text" value="${requestScope.member.email}" name="email">
+								<i class="fa fa-envelope-o fa-fw w3-margin-right w3-large w3-text-teal"></i>
+								<input type="text" value="${requestScope.member.email}" name="email">
 							</p>
 							<p>
 								<i class="fa fa-address-book fa-fw w3-margin-right w3-large w3-text-teal"></i>
@@ -86,9 +90,14 @@ html, body, h1, h2, h3, h4, h5, h6 {
 
 					<!-- End Left Column -->
 				</div>
-
+			<!-- End The Grid -->
+			</div>
+			<!-- End Page Container -->
+		</div>
+	</form>
 				<!-- Right Column -->
-				<div class="w3-twothird">
+			<form action="${pageContext.request.contextPath}/logSc" method="post">
+				<div class="w3-twothird w3-display-topright w3-margin-top" id="right">
 
 					<div class="w3-container w3-card-2 w3-white w3-margin-bottom">
 						<h2 class="w3-text-grey w3-padding-16">
@@ -100,33 +109,31 @@ html, body, h1, h2, h3, h4, h5, h6 {
 								<div class="w3-container">
 									<table class="w3-table-all w3-hoverable">
 										<tr id="list">
-											<th>질문</th>
+											<th>번호</th><th>제목</th><th>내용</th><th>ID</th>
 										</tr>
 										<c:forEach var="question" items="${flist}">
 											<tr>
-												<td><a id="list" href="FAQController?command=detail&num=${question.FAQNum}">${question.FAQName}</a></td>
+												<td><a id="list" >${question.FAQNum}</a></td>
+												<td><a id="list" >${question.FAQName}</a></td>
+												<td><a id="list" >${question.fAQContent}</a></td>
+												<td><a id="list" >${question.id}</a></td>
 											</tr>
 										</c:forEach>
 									</table>
+										
+										
 								</div>
+								
+								<br><hr><br>
+								<button class="button button4" type="submit">Q&A</button>
+								<br><hr><br>
 							</header>
 						</div>
 					</div>
-					<br>
-					<br>
-					<br>
-					<br>
-
-
-					<!-- End Right Column -->
+					<br><br><br><br>
+		<!-- End Right Column -->
 				</div>
-
-				<!-- End The Grid -->
-			</div>
-			<!-- End Page Container -->
-		</div>
-	</form>
-
+			</form>
 </body>
 </html>
 

@@ -45,10 +45,12 @@ public class FAQDao {
 			rs = ps.executeQuery();
 			
 			while(rs.next())
-				list.add(new FAQVO(rs.getInt("faq_num"),rs.getString("faq_name"),rs.getString("faq_content"),rs.getString("member_id")));
+				list.add(new FAQVO(rs.getInt(1),
+						rs.getString(2),
+						rs.getString(3),
+						rs.getString(4)));
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			DBUtil.close(c, ps, rs);

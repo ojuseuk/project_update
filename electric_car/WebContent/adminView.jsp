@@ -50,7 +50,7 @@ document.onkeydown = noEvent;
       <a href="#" class="w3-bar-item w3-button w3-light-grey" onclick="locationList('${root}')"><i class="fa fa-caret-right w3-margin-right"></i>목록 보기</a>
 <%--       ${pageContext.request.contextPath}/loc?command=updateList --%>
     </div>
-    <a href="faq.jsp" class="w3-bar-item w3-button">문의게시판</a>
+    <a href="#" class="w3-bar-item w3-button">문의게시판</a>
     
   
   </div>

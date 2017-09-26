@@ -12,7 +12,6 @@ public class FAQVO {
 	
 	/** 기본 생성자 */
 	public FAQVO() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public FAQVO(int fAQNum, String fAQName, String fAQContent, String id) {

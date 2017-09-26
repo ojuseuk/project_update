@@ -2,7 +2,9 @@ package controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,9 +12,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import car.dao.FAQDao;
 import car.dao.JoinDao;
 import car.dao.LoginDAO;
 import car.dao.UpdateDao;
+import car.dto.FAQVO;
 import car.dto.MemberVO;
 
 @WebServlet("/logSc")
@@ -23,7 +27,7 @@ public class MemberController extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
 		System.out.println("MemberController : " + command);
-
+		
 		if (command.equals("login")) {
 			login(request, response);
 			/* response.sendRedirect("loginView.jsp"); */
@@ -36,9 +40,32 @@ public class MemberController extends HttpServlet {
 		} else if (command.equals("info")) {
 			System.out.println("개인정보");
 			info(request, response);
+		} else if (command.equals("getList")) {
+			System.out.println("Q&A리스트");
+			getList(request, response);
 		}
+		
 	}
 
+	private void getList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+		
+		
+		/** Q&A 정보 가져오기 */
+		FAQDao fd = FAQDao.getInstance();
+		List<FAQVO> list = fd.getList();
+		
+		System.out.println(list.toString());
+		
+		request.setAttribute("flist",list);
+			
+		RequestDispatcher rd = request.getRequestDispatcher("info.jsp");
+		rd.forward(request, response);
+		System.out.println("Q&A리스트");
+	
+	}
+	
+		
 	private void info(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		// session에 저장중인 id를 가져와서 id에 넣어주는 소스입니다.
@@ -64,9 +91,13 @@ public class MemberController extends HttpServlet {
 		url = "info.jsp";
 
 		request.getRequestDispatcher(url).forward(request, response);
-		System.out.println("개인정보");
-
+		System.out.println("개인정보+ Q&Axxx");
+		
+		
 	}
+	
+	
+	
 
 	private void login(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 

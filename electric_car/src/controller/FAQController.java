@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.websocket.Session;
 
 import car.dao.FAQDao;
 import car.dto.FAQVO;
@@ -26,9 +25,7 @@ public class FAQController extends HttpServlet {
 		String command = request.getParameter("command");
 		System.out.println(command);
 		
-		if(command.equals("getList")){
-			getList(request,response);
-		}else if(command.equals("detail")){
+		if(command.equals("detail")){
 			detail(request,response);
 		}else if(command.equals("FAQAdd")){
 			getAdd(request, response);
@@ -50,7 +47,7 @@ public class FAQController extends HttpServlet {
 		
 	}//end of detail
 	
-	/** FAQ 목록을 가져오는 함수 */
+	/** FAQ 목록을 가져오는 함수 *//*
 	protected void getList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		
 		FAQDao fd = FAQDao.getInstance();
@@ -62,7 +59,7 @@ public class FAQController extends HttpServlet {
 		rd.forward(request, response);
 		
 	}//end of getList
-	
+*/	
 	protected void getAdd(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		
 		HttpSession session = request.getSession(false);
