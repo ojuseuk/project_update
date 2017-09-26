@@ -51,7 +51,7 @@ document.onkeydown = noEvent;
 <%--       ${pageContext.request.contextPath}/loc?command=updateList --%>
     </div>
     <a href="faq.jsp" class="w3-bar-item w3-button">문의게시판</a>
-    <a href="#" class="w3-bar-item w3-button">자유게시판</a>
+    
   
   </div>
  

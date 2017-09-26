@@ -15,7 +15,6 @@ public class FAQVO {
 		// TODO Auto-generated constructor stub
 	}
 
-	/** 생성자 */
 	public FAQVO(int fAQNum, String fAQName, String fAQContent, String id) {
 		super();
 		this.fAQNum = fAQNum;
@@ -30,6 +29,11 @@ public class FAQVO {
 		this.fAQName = fAQName;
 		this.fAQContent = fAQContent;
 		this.id = id;
+	}
+	/* 접근자, 수정자 */
+
+	public int getFAQNum() {
+		return fAQNum;
 	}
 
 	public int getfAQNum() {
@@ -64,6 +68,9 @@ public class FAQVO {
 		this.id = id;
 	}
 
+	
+	/* 함수 */
+	
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -73,12 +80,11 @@ public class FAQVO {
 		builder.append(fAQName);
 		builder.append(", fAQContent=");
 		builder.append(fAQContent);
+		builder.append("FAQVO [FAQNum=");
 		builder.append(", id=");
 		builder.append(id);
 		builder.append("]");
 		return builder.toString();
 	}
 	
-	
-
 }//end of FAQ
