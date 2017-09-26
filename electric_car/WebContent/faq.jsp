@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,23 +16,43 @@
 <style>
 .w3-sidebar a {font-family: "Roboto", sans-serif}
 body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
-</style>
-<script type="text/javascript">
-function noEvent() { // 새로 고침 방지
-    if (event.keyCode == 116) {
-        alert("새로고침을 할 수 없습니다.");
-        event.keyCode = 2;
-        return false;
-    } else if (event.ctrlKey
-            && (event.keyCode == 78 || event.keyCode == 82)) {
-        return false;
-    }
+
+/**faq 스타일*/
+#list {
+	background-color: #18bc9c;
+	color: white;
 }
-document.onkeydown = noEvent;
-</script>
-</head>
+
+tr, td {
+	background-color: #18bc9c;
+	color: white;
+}
+
+.button {
+	background-color: #18bc9c; /* Green */
+	border-color: white;
+	border-width: 1px;
+	border-style: solid;
+	color: white;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	-webkit-transition-duration: 0.4s; /* Safari */
+	transition-duration: 0.4s;
+	cursor: pointer;
+}
+
+.button:hover {
+	background-color: white; /* Green */
+	border-color: white;
+	border-width: 1px;
+	border-style: solid;
+	color: #18bc9c;
+}
+</style>
 <body class="w3-content" style="max-width:1200px">
-<c:set var ="root" value="${pageContext.request.contextPath}"/>
 
 <!-- Sidebar/menu -->
 <nav class="w3-sidebar w3-bar-block w3-white w3-collapse w3-top" style="z-index:3;width:250px" id="mySidebar">
@@ -45,16 +66,19 @@ document.onkeydown = noEvent;
       충전소 <i class="fa fa-caret-down"></i>
     </a>
     <div id="demoAcc" class="w3-bar-block w3-hide w3-padding-large w3-medium">
-      <a href="${pageContext.request.contextPath}/location/locationAdd.jsp" class="w3-bar-item w3-button w3-light-grey" ><i class="fa fa-caret-right w3-margin-right"></i>추가</a>
-      <a href="#" class="w3-bar-item w3-button w3-light-grey" onclick="locationList('${root}')"><i class="fa fa-caret-right w3-margin-right"></i>목록 보기</a>
-<%--       ${pageContext.request.contextPath}/loc?command=updateList --%>
+      <a href="#" class="w3-bar-item w3-button w3-light-grey"><i class="fa fa-caret-right w3-margin-right"></i>추가</a>
+      <a href="#" class="w3-bar-item w3-button w3-light-grey"><i class="fa fa-caret-right w3-margin-right"></i>수정</a>
+      <a href="#" class="w3-bar-item w3-button w3-light-grey"><i class="fa fa-caret-right w3-margin-right"></i>삭제</a>
+     
     </div>
-    <a href="faq.jsp" class="w3-bar-item w3-button">문의게시판</a>
+    <a href="#" class="w3-bar-item w3-button">문의게시판</a>
     <a href="#" class="w3-bar-item w3-button">자유게시판</a>
   
   </div>
  
 </nav>
+
+
 
 <!-- Overlay effect when opening sidebar on small screens -->
 <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
@@ -74,15 +98,28 @@ document.onkeydown = noEvent;
     </p>
   </header>
 
-  <!-- Image header -->
-  <div class="w3-display-container w3-container" >
-    <img src="./images/ap.PNG" alt="전기차 충전소" style="width:100%;">
-    <div class="w3-display-topleft w3-text-black" style="padding:24px 48px">
-      <h1 class="w3-hide-small">관리자 페이지</h1>
-    </div>
-    <div class="w3-display-topleft w3-text-black" id="list" style="margin: 100px 0px 0px 90px; ">
-    </div>
+  <!-- 문의게시판 -->
+  <div class="w3-display-container w3-container">
+    <header class="masthead">
+	<div class="w3-container">
+		<table class="w3-table-all w3-hoverable">
+			<tr id = "list">
+				<th>질문</th>
+			</tr>
+			<c:forEach var="question" items="${flist}">
+				<tr>
+					<td><a id = "list" href="FAQController?command=detail&num=${question.FAQNum}">${question.FAQName}</a></td>
+				</tr>
+			</c:forEach>
+		</table>
+	</div>
+	</header>
   </div>
+
+ 
+  
+
+ 
 
   <div class="w3-black w3-center w3-padding-24">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">team 3</a></div>
 
@@ -116,34 +153,6 @@ function w3_close() {
     document.getElementById("myOverlay").style.display = "none";
 }
 </script>
-
-<script type="text/javascript" src="${pageContext.request.contextPath}/script/httpRequest.js"></script>
-<script type="text/javascript">
-	function locationList(root){
-		url = root + "/loc";
-		sendRequest(url, "command=updateList", callback, "get");
-	}
-	
-	function callback(){
-		if(httpRequest.readyState == 4 && httpRequest.status == 200){
-			document.getElementById("list").innerHTML = httpRequest.responseText;
-		}
-	}
-
-</script>
-<script type="text/javascript">
-	function location2(root, i){
-		url = root + "/loc";
-		sendRequest(url, "command=updateList&pageNumber="+i, callback, "get");
-	}
-	
-	function callback(){
-		if(httpRequest.readyState == 4 && httpRequest.status == 200){
-			document.getElementById("list").innerHTML = httpRequest.responseText;
-		}
-	}
-</script>
-
 <!-- 로그아웃  -->
 <script>
 		function logoutPro(){

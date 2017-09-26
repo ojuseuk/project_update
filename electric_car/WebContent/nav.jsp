@@ -16,7 +16,8 @@
     <a href="#" class="w3-bar-item w3-button w3-padding-large">HOME</a>
     <a href="#ch" class="w3-bar-item w3-button w3-padding-large w3-hide-small">충전소</a>
     <a href="#car" class="w3-bar-item w3-button w3-padding-large w3-hide-small">전기차</a>
-    <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hide-small">CONTACT</a>
+    <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hide-small">CONTACT</a>    
+    <a href="#Q&A" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Q&A</a>
     <a href="#map" class="w3-bar-item w3-button w3-padding-large w3-hide-small">MAP</a>
     
     <c:if test="${empty sessionScope.id }">
@@ -27,7 +28,7 @@
     </c:if>
     <c:if test="${not empty sessionScope.id }">
     <div class="w3-dropdown w3-hide-small w3-right">
-    <a href="${pageContext.request.contextPath}/logSc?command=info" class="w3-bar-item w3-button w3-padding-large w3-hide-small" >개인정보 수정</a>
+    <a href="${pageContext.request.contextPath}/logSc?command=info" class="w3-bar-item w3-button w3-padding-large w3-hide-small" >개인정보</a>
     <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-large w3-hide-small" onclick="logoutPro()">로그아웃</a>
     </div>
     </c:if>
