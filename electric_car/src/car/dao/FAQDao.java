@@ -99,7 +99,7 @@ public class FAQDao {
 		
 		try {
 			con = DBUtil.getConnection();
-			pstmt = con.prepareStatement("insert into faq values(faq_seq.nextval, ?, ?, ?)");
+			pstmt = con.prepareStatement("insert into faq(faq_num, faq_name, faq_context, member_id) values(faq_seq.nextval, ?, ?, ?)");
 			
 			pstmt.setString(1, title);
 			pstmt.setString(2, message);

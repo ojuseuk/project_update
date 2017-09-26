@@ -3,6 +3,8 @@ package controller;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -82,21 +84,27 @@ public class MemberController extends HttpServlet {
 		// 아래 처럼 getInstance를 사용할경우 그 안에 있는 어떤 함수를 불러 올지 사용해주어야 합니다.
 		// LoginDAO.getInstance();
 		/** 수정한 부분 */
-		MemberVO member = LoginDAO.getInstance().getUserInfo(id);
+		Map<MemberVO, List<FAQVO>> map = LoginDAO.getInstance().getUserInfo(id);
 		
 		// 개인정보를 확인해야 하기 때문에 id만 넘겨주는것이 아니라 아래처럼 memberVO 전체를 넘겨주어야 합니다.
 		// request.setAttribute("id", id);
 
+		Set<MemberVO> mem = map.keySet();
+		MemberVO member = null;
+		List<FAQVO> list = null;
+		
+		for (MemberVO memberVO : mem) {
+			member = memberVO;
+			list = map.get(memberVO);
+		}
+		System.out.println(list.size());
 		request.setAttribute("member", member);
+		request.setAttribute("list", list);
 		url = "info.jsp";
 
 		request.getRequestDispatcher(url).forward(request, response);
-		System.out.println("개인정보+ Q&Axxx");
-		
 		
 	}
-	
-	
 	
 
 	private void login(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {

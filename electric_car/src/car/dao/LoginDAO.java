@@ -4,7 +4,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
+import car.dto.FAQVO;
 import car.dto.MemberVO;
 import car.util.DBUtil;
 
@@ -73,23 +78,27 @@ public class LoginDAO {
 
 	}
 
-	public MemberVO getUserInfo(String id) {
+	public Map<MemberVO, List<FAQVO>> getUserInfo(String id) {
 
 		Connection c = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		MemberVO member = null;
+		FAQVO faq = null;
+		List<FAQVO> list = new ArrayList<>();
+		Map<MemberVO, List<FAQVO>> map = new HashMap<>();
+		
 //		전역 변수로 계속 유지하고 있으면 메모리에 안좋기 때문에 지역 변수로 선언하는 것이 좋습니다. 
 //		sql = "select * from member where id=?";
 		
-		String sql = "select * from member where member_id=?";
+		String sql = "SELECT * FROM faq F, MEMBER M WHERE F.member_id=M.member_id and m.member_id = ?";
 		try {
 			c = DBUtil.getConnection();
 			pstmt = c.prepareStatement(sql);
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
 			
-			if (rs.next()) {
+			while (rs.next()) {
 				member = new MemberVO();
 //				rs.get~~ 는 db의 필드명과 같아야 합니다.
 				member.setId(rs.getString("member_id"));
@@ -98,15 +107,28 @@ public class LoginDAO {
 				member.setEmail(rs.getString("member_email"));
 				member.setAddr(rs.getString("member_addr"));
 				member.setPhone(rs.getString("member_phone"));
+				
+				faq = new FAQVO();
+				faq.setfAQNum(rs.getInt("faq_num"));
+				faq.setfAQName(rs.getString("faq_name"));
+				faq.setfAQContent(rs.getString("faq_context"));
+				faq.setMemberId(rs.getString("member_id"));
+				faq.setAdminName(rs.getString("admin_name"));
+				faq.setAdminContext(rs.getString("admin_context"));
+				faq.setAdminId(rs.getString("admin_id"));
+				list.add(faq);
 			}
 
+			System.out.println(list.size());
+			map.put(member, list);
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			DBUtil.close(c, pstmt, rs);
 		}
-		return member;
+		return map;
 
 	}
 }
