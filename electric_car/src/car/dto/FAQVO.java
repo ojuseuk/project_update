@@ -8,33 +8,40 @@ public class FAQVO {
 	private int fAQNum;
 	private String fAQName;
 	private String fAQContent;
-	private String id;
+	private String MemberId;
+	private String AdminId;
+	private String AdminName;
+	private String AdminContext;
 	
 	/** 기본 생성자 */
 	public FAQVO() {
 	}
 
-	public FAQVO(int fAQNum, String fAQName, String fAQContent, String id) {
+	/** data 추가할때 사용 하는 생성자 */
+	public FAQVO(int fAQNum, String fAQName, String fAQContent, String memberId, String adminId, String adminName,
+			String adminContext) {
 		super();
 		this.fAQNum = fAQNum;
 		this.fAQName = fAQName;
 		this.fAQContent = fAQContent;
-		this.id = id;
+		this.MemberId = memberId;
+		this.AdminId = adminId;
+		this.AdminName = adminName;
+		this.AdminContext = adminContext;
 	}
-
-	/** data 추가할때 사용 하는 생성자 */
-	public FAQVO(String fAQName, String fAQContent, String id) {
+	
+	public FAQVO(int fAQNum, String fAQName, String fAQContent, String memberId) {
 		super();
+		this.fAQNum = fAQNum;
 		this.fAQName = fAQName;
 		this.fAQContent = fAQContent;
-		this.id = id;
-	}
-	/* 접근자, 수정자 */
+		this.MemberId = memberId;
 
-	public int getFAQNum() {
-		return fAQNum;
 	}
 
+	
+	/** 접근자, 수정자 */
+	
 	public int getfAQNum() {
 		return fAQNum;
 	}
@@ -59,12 +66,36 @@ public class FAQVO {
 		this.fAQContent = fAQContent;
 	}
 
-	public String getId() {
-		return id;
+	public String getMemberId() {
+		return MemberId;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setMemberId(String memberId) {
+		MemberId = memberId;
+	}
+
+	public String getAdminId() {
+		return AdminId;
+	}
+
+	public void setAdminId(String adminId) {
+		AdminId = adminId;
+	}
+
+	public String getAdminName() {
+		return AdminName;
+	}
+
+	public void setAdminName(String adminName) {
+		AdminName = adminName;
+	}
+
+	public String getAdminContext() {
+		return AdminContext;
+	}
+
+	public void setAdminContext(String adminContext) {
+		AdminContext = adminContext;
 	}
 
 	
@@ -79,11 +110,21 @@ public class FAQVO {
 		builder.append(fAQName);
 		builder.append(", fAQContent=");
 		builder.append(fAQContent);
-		builder.append("FAQVO [FAQNum=");
-		builder.append(", id=");
-		builder.append(id);
+		builder.append(", MemberId=");
+		builder.append(MemberId);
+		builder.append(", AdminId=");
+		builder.append(AdminId);
+		builder.append(", AdminName=");
+		builder.append(AdminName);
+		builder.append(", AdminContext=");
+		builder.append(AdminContext);
 		builder.append("]");
 		return builder.toString();
 	}
+
+
+	
+	
+	
 	
 }//end of FAQ
