@@ -9,9 +9,6 @@
 	 LoginDAO dao = LoginDAO.getInstance();
 	 MemberVO mem= dao.getUserInfo(id);
 %> --%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -59,12 +56,12 @@ html, body, h1, h2, h3, h4, h5, h6 {
 							</p>
 							<p>
 								<i class="fa fa-smile-o fa-fw w3-margin-right w3-large w3-text-teal"></i>
-								<input type="text" value="${requestScope.member.name}" disabled="disabled"> <input type="hidden" value="${requestScope.member.name}" name="name">
+								<input type="text" value="${requestScope.member.name}" disabled="disabled">
+								<input type="hidden" value="${requestScope.member.name}" name="name">
 							</p>
 							<p>
-								<i
-									class="fa fa-envelope-o fa-fw w3-margin-right w3-large w3-text-teal"></i><input
-									type="text" value="${requestScope.member.email}" name="email">
+								<i class="fa fa-envelope-o fa-fw w3-margin-right w3-large w3-text-teal"></i>
+								<input type="text" value="${requestScope.member.email}" name="email">
 							</p>
 							<p>
 								<i class="fa fa-address-book fa-fw w3-margin-right w3-large w3-text-teal"></i>
@@ -112,11 +109,7 @@ html, body, h1, h2, h3, h4, h5, h6 {
 							</header>
 						</div>
 					</div>
-					<br>
-					<br>
-					<br>
-					<br>
-
+					<br><br><br><br>
 
 					<!-- End Right Column -->
 				</div>

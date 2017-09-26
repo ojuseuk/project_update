@@ -36,11 +36,23 @@ body {
 	
 }
 </style>
-
+<!-- <script type="text/javascript">
+function noEvent() { // 새로 고침 방지
+    if (event.keyCode == 116) {
+        alert("새로고침을 할 수 없습니다.");
+        event.keyCode = 2;
+        return false;
+    } else if (event.ctrlKey
+            && (event.keyCode == 78 || event.keyCode == 82)) {
+        return false;
+    }
+}
+document.onkeydown = noEvent;
+</script> -->
 </head>
 <body>
 	<jsp:include page="nav.jsp" />
-	<div class="w3-row-padding w3-content" style="max-width: 1400px; margin-top: 75px;">
+	<div class="w3-row-padding w3-content" style="max-width: 1400px; margin-top: 75px;" id="ab">
 		<div class="w3-twothird" style="margin-top: -30px;">
 			<h1 align="center">Map</h1>
 			<div align="center">
@@ -52,7 +64,7 @@ body {
 				<h2>충전소 검색</h2>
 				<div >
 					<div>
-						<form action="${pageContext.request.contextPath}/loc"
+						<form name="f"
 							method="post">
 							<span style="font-weight: bolder; font: 14px; float: left; padding-left: 5px;">지역 선택</span> <br style="line-height: 1.5;"> 
 							<input type="hidden" name="command" value="sido">
@@ -75,10 +87,7 @@ body {
 								<option value="충청남도">충청남도</option>
 								<option value="충청북도">충청북도</option>
 							</select>
-							<button type="submit" id="word_btn"
-								style="width: 10px; height: 10px; margin-top: 11px;">
-								<img src="./images/reading_glass.gif" alt="조회 버튼">
-							</button>
+								<img src="./images/reading_glass.gif" alt="조회 버튼" onclick="sidoSearch('${root}')">
 						</form>
 					</div>
 					<div class="search_box" style="float: left;">
@@ -103,6 +112,7 @@ body {
 			<br>
 			<div class="w3-container w3-light-grey w3-justify">
 				<h2>충전소</h2>
+				<div id = "a">
 				<div style="overflow: scroll;  height: 550px;">
 					<table class="table table-hover">
 						<thead>
@@ -126,45 +136,18 @@ body {
 								value="${data.lat}">
 							<input type="hidden" id="longi_${i.count}"
 								value="${data.longi}">
-							<input type="hidden" id="cnt"
-								value="${requestScope.list.size()}">
 						</c:forEach>
 					</table>
+					<input type="hidden" id="cnt" value="${requestScope.list.size()}">
+				</div>
 				</div>
 			</div>
 		</div>
 	</div>
 	<jsp:include page="footer.jsp"/>
+	<script type="text/javascript" src="${root}/script/httpRequest.js"></script>
+	<script type="text/javascript" src="${root}/js/mapAjax.js"></script>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAt7QvTZpfChoMvfXoB4MYDvIKfeyxZX8s&callback=myMap"></script>
-	
-		<script>
-		// Automatic Slideshow - change image every 4 seconds
-		var myIndex = 0;
-		carousel();
 
-		function carousel() {
-			var i;
-			var x = document.getElementsByClassName("mySlides");
-			for (i = 0; i < x.length; i++) {
-				x[i].style.display = "block";
-			}
-			myIndex++;
-			if (myIndex > x.length) {
-				myIndex = 1
-			}
-			x[myIndex - 1].style.display = "block";
-			setTimeout(carousel, 4000);
-		}
-
-		// Used to toggle the menu on small screens when clicking on the menu button
-		function myFunction() {
-			var x = document.getElementById("navDemo");
-			if (x.className.indexOf("w3-show") == -1) {
-				x.className += " w3-show";
-			} else {
-				x.className = x.className.replace(" w3-show", "");
-			}
-		}
-	</script>
 </body>
 </html>

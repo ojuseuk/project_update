@@ -22,6 +22,9 @@ import car.dto.StationVO;
 @WebServlet("/loc")
 public class LocationInfo extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println(1 + "--- " + request.getServletPath());
+		System.out.println(2 + "---- " + request.getScheme());
+		
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
 		String command = request.getParameter("command");
@@ -68,12 +71,12 @@ public class LocationInfo extends HttpServlet {
 		map.put("전라북도", "35.716705/127.144185");
 		map.put("전라남도", "34.819400/126.893113");
 		map.put("제주특별자치도", " 33.364805/126.542671");
-		
 		ArrayList<StationVO> staList = StationDao.infoStation(sido);
-		
 		request.setAttribute("map", map.get(sido));
 		request.setAttribute("staList", staList);
-		request.getRequestDispatcher("searchView.jsp").forward(request, response);
+		request.setAttribute("msg", "msg");
+		System.out.println(4);
+		request.getRequestDispatcher("location/context.jsp").forward(request, response);
 		
 	}
 	
@@ -103,8 +106,9 @@ public class LocationInfo extends HttpServlet {
 			
 			System.out.println(list.size());
 			if(list != null){
+				
 				url = "charging.jsp";
-					   
+				request.setAttribute("msg2", "msg2");	   
 				request.setAttribute("list", list);
 			}
 			System.out.println(url);
