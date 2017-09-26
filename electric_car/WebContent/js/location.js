@@ -29,7 +29,7 @@ function markerAddress(location) {
 			var num = s.indexOf(",");
 //			alert(num);
 			a=s.substring(0, num);
-			b=s.substring(num+1)
+			b=s.substring(num+2);
 //			alert(a);
 //			alert(b);
 			document.getElementById("station_lat").value=a;

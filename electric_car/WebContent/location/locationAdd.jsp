@@ -14,7 +14,7 @@
 		<table>
 			<tr>
 				<td>충전소명</td>
-				<td><input type="text" name="station_scnm"></td>
+				<td><input type="text" name="station_csnm"></td>
 			</tr>
 			<tr>
 				<td>주소</td>
@@ -33,7 +33,7 @@
 				<td><input type="text" name="station_longi" id="station_longi" readonly="readonly"></td>
 			</tr>
 		</table>
-		
+		<input type="hidden" name="command" value="add">
 		<input type="submit" value="추가">
 	</form>
 	<script src="${pageContext.request.contextPath}/js/location.js"></script>

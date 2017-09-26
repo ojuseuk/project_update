@@ -6,15 +6,22 @@ public class StationVO {
 	private String csnm;
 	private String addr;
 	private String cpnm;
-	private String lat;
-	private String longi;
+	private double lat;
+	private double longi;
 
 	public StationVO() {
 	}
 
-	public StationVO(int id, String csnm, String addr, String cpnm, String lat, String longi) {
-		super();
+	public StationVO(int id, String csnm, String addr, String cpnm, double lat, double longi) {
 		this.id = id;
+		this.csnm = csnm;
+		this.addr = addr;
+		this.cpnm = cpnm;
+		this.lat = lat;
+		this.longi = longi;
+	}
+	
+	public StationVO(String csnm, String addr, String cpnm, double lat, double longi) {
 		this.csnm = csnm;
 		this.addr = addr;
 		this.cpnm = cpnm;
@@ -54,19 +61,19 @@ public class StationVO {
 		this.cpnm = cpnm;
 	}
 
-	public String getLat() {
+	public double getLat() {
 		return lat;
 	}
 
-	public void setLat(String lat) {
+	public void setLat(double lat) {
 		this.lat = lat;
 	}
 
-	public String getLongi() {
+	public double getLongi() {
 		return longi;
 	}
 
-	public void setLongi(String longi) {
+	public void setLongi(double longi) {
 		this.longi = longi;
 	}
 

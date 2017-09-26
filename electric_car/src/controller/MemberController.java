@@ -36,7 +36,6 @@ public class MemberController extends HttpServlet {
 		} else if (command.equals("info")) {
 			System.out.println("개인정보");
 			info(request, response);
-
 		}
 	}
 

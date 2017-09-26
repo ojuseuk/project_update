@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +16,22 @@
 .w3-sidebar a {font-family: "Roboto", sans-serif}
 body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 </style>
+<script type="text/javascript">
+function noEvent() { // 새로 고침 방지
+    if (event.keyCode == 116) {
+        alert("새로고침을 할 수 없습니다.");
+        event.keyCode = 2;
+        return false;
+    } else if (event.ctrlKey
+            && (event.keyCode == 78 || event.keyCode == 82)) {
+        return false;
+    }
+}
+document.onkeydown = noEvent;
+</script>
+</head>
 <body class="w3-content" style="max-width:1200px">
+<c:set var ="root" value="${pageContext.request.contextPath}"/>
 
 <!-- Sidebar/menu -->
 <nav class="w3-sidebar w3-bar-block w3-white w3-collapse w3-top" style="z-index:3;width:250px" id="mySidebar">
@@ -29,10 +45,9 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
       충전소 <i class="fa fa-caret-down"></i>
     </a>
     <div id="demoAcc" class="w3-bar-block w3-hide w3-padding-large w3-medium">
-      <a href="#" class="w3-bar-item w3-button w3-light-grey"><i class="fa fa-caret-right w3-margin-right"></i>추가</a>
-      <a href="#" class="w3-bar-item w3-button w3-light-grey"><i class="fa fa-caret-right w3-margin-right"></i>수정</a>
-      <a href="#" class="w3-bar-item w3-button w3-light-grey"><i class="fa fa-caret-right w3-margin-right"></i>삭제</a>
-     
+      <a href="${pageContext.request.contextPath}/location/locationAdd.jsp" class="w3-bar-item w3-button w3-light-grey" ><i class="fa fa-caret-right w3-margin-right"></i>추가</a>
+      <a href="#" class="w3-bar-item w3-button w3-light-grey" onclick="locationList('${root}')"><i class="fa fa-caret-right w3-margin-right"></i>목록 보기</a>
+<%--       ${pageContext.request.contextPath}/loc?command=updateList --%>
     </div>
     <a href="#" class="w3-bar-item w3-button">문의게시판</a>
     <a href="#" class="w3-bar-item w3-button">자유게시판</a>
@@ -40,8 +55,6 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
   </div>
  
 </nav>
-
-
 
 <!-- Overlay effect when opening sidebar on small screens -->
 <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
@@ -57,23 +70,18 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
     <p class="w3-left">전기차 충전소</p>
     <p class="w3-right">
       <i class="fa fa-car w3-margin-right"></i>
-     
     </p>
   </header>
 
   <!-- Image header -->
-  <div class="w3-display-container w3-container">
-    <img src="./images/ap.PNG" alt="전기차 충전소" style="width:100%">
+  <div class="w3-display-container w3-container" >
+    <img src="./images/ap.PNG" alt="전기차 충전소" style="width:100%;">
     <div class="w3-display-topleft w3-text-black" style="padding:24px 48px">
       <h1 class="w3-hide-small">관리자 페이지</h1>
-     
+    </div>
+    <div class="w3-display-topleft w3-text-black" id="list" style="margin: 100px 0px 0px 90px; ">
     </div>
   </div>
-
- 
-  
-
- 
 
   <div class="w3-black w3-center w3-padding-24">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">team 3</a></div>
 
@@ -106,6 +114,33 @@ function w3_close() {
     document.getElementById("mySidebar").style.display = "none";
     document.getElementById("myOverlay").style.display = "none";
 }
+</script>
+
+<script type="text/javascript" src="${pageContext.request.contextPath}/script/httpRequest.js"></script>
+<script type="text/javascript">
+	function locationList(root){
+		url = root + "/loc";
+		sendRequest(url, "command=updateList", callback, "get");
+	}
+	
+	function callback(){
+		if(httpRequest.readyState == 4 && httpRequest.status == 200){
+			document.getElementById("list").innerHTML = httpRequest.responseText;
+		}
+	}
+
+</script>
+<script type="text/javascript">
+	function location2(root, i){
+		url = root + "/loc";
+		sendRequest(url, "command=updateList&pageNumber="+i, callback, "get");
+	}
+	
+	function callback(){
+		if(httpRequest.readyState == 4 && httpRequest.status == 200){
+			document.getElementById("list").innerHTML = httpRequest.responseText;
+		}
+	}
 </script>
 
 </body>
