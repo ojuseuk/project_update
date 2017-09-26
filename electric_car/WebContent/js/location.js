@@ -35,8 +35,9 @@ function markerAddress(location) {
 			document.getElementById("station_lat").value=a;
 			document.getElementById("station_longi").value=b;
 			
-		} else {
-			alert("위도 or 경도 확인이 불가능합니다.");
-		}
+		} 
+//		else {
+//			alert("위도 or 경도 확인이 불가능합니다.");
+//		}
 	});
 }

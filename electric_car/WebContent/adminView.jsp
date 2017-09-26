@@ -6,6 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<c:set var="root" value="${pageContext.request.contextPath}"/>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -31,7 +32,6 @@ document.onkeydown = noEvent;
 </script>
 </head>
 <body class="w3-content" style="max-width:1200px">
-<c:set var ="root" value="${pageContext.request.contextPath}"/>
 
 <!-- Sidebar/menu -->
 <nav class="w3-sidebar w3-bar-block w3-white w3-collapse w3-top" style="z-index:3;width:250px" id="mySidebar">
@@ -45,7 +45,8 @@ document.onkeydown = noEvent;
       충전소 <i class="fa fa-caret-down"></i>
     </a>
     <div id="demoAcc" class="w3-bar-block w3-hide w3-padding-large w3-medium">
-      <a href="${pageContext.request.contextPath}/location/locationAdd.jsp" class="w3-bar-item w3-button w3-light-grey" ><i class="fa fa-caret-right w3-margin-right"></i>추가</a>
+      <a onclick="document.getElementById('id01').style.display='block'" href="#" class="w3-bar-item w3-button w3-light-grey" ><i class="fa fa-caret-right w3-margin-right"></i>추가</a>
+      <jsp:include page="location/locationAdd.jsp"/>
       <a href="#" class="w3-bar-item w3-button w3-light-grey" onclick="locationList('${root}')"><i class="fa fa-caret-right w3-margin-right"></i>목록 보기</a>
 <%--       ${pageContext.request.contextPath}/loc?command=updateList --%>
     </div>
@@ -149,6 +150,10 @@ function w3_close() {
 		function logoutPro(){
 			location.href="logoutPro.jsp";
 		}
+</script>
+<script type="text/javascript">
+// ${pageContext.request.contextPath}/location/locationAdd.jsp
+
 </script>
 </body>
 </html>

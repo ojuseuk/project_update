@@ -7,10 +7,10 @@
 <html>
 <head>
 <title>W3.CSS Template</title>
+<c:set var="root" value="${pageContext.request.contextPath}"/>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/w3.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/w3.css">
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Lato">
 <link rel="stylesheet"
@@ -100,7 +100,7 @@ body {
 			<br>
 			<div class="w3-container w3-light-grey w3-justify">
 				<h2>충전소</h2>
-				<div >
+				<div style="overflow: scroll;  height: 550px;">
 					<table class="table table-hover">
 						<thead>
 							<tr>

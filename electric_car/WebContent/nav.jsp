@@ -6,6 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<c:set var="root" value="${pageContext.request.contextPath}"/>
 </head>
 <body>
 
@@ -13,12 +14,14 @@
 <div class="w3-top">
   <div class="w3-bar w3-black w3-card-2">
     <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-    <a href="#" class="w3-bar-item w3-button w3-padding-large">HOME</a>
+    <a href="${pageContext.request.contextPath}/index.jsp" class="w3-bar-item w3-button w3-padding-large">HOME</a>
     <a href="#ch" class="w3-bar-item w3-button w3-padding-large w3-hide-small">충전소</a>
-    <a href="#car" class="w3-bar-item w3-button w3-padding-large w3-hide-small">전기차</a>
-    <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hide-small">CONTACT</a>    
-    <a href="#Q&A" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Q&A</a>
-    <a href="#map" class="w3-bar-item w3-button w3-padding-large w3-hide-small">MAP</a>
+    <a href="${pageContext.request.contextPath}/index.jsp#car" class="w3-bar-item w3-button w3-padding-large w3-hide-small">전기차</a>
+    <a href="${pageContext.request.contextPath}/index.jsp#contact" class="w3-bar-item w3-button w3-padding-large w3-hide-small">CONTACT</a>    
+    <c:if test="${not empty sessionScope.id }">
+    	<a href="${pageContext.request.contextPath}/index.jsp#Q&A" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Q&A</a>
+    </c:if>
+    <a href="${pageContext.request.contextPath}/index.jsp#map" class="w3-bar-item w3-button w3-padding-large w3-hide-small">MAP</a>
     
     <c:if test="${empty sessionScope.id }">
     <div class="w3-dropdown w3-hide-small w3-right">
@@ -29,7 +32,7 @@
     <c:if test="${not empty sessionScope.id }">
     <div class="w3-dropdown w3-hide-small w3-right">
     <a href="${pageContext.request.contextPath}/logSc?command=info" class="w3-bar-item w3-button w3-padding-large w3-hide-small" >개인정보</a>
-    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-large w3-hide-small" onclick="logoutPro()">로그아웃</a>
+    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-large w3-hide-small" onclick="logoutPro('${pageContext.request.contextPath}')">로그아웃</a>
     </div>
     </c:if>
   </div>
@@ -37,16 +40,16 @@
 
 <!-- Navbar on small screens -->
 <div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px">
-  <a href="#ch" class="w3-bar-item w3-button w3-padding-large">ch</a>
-  <a href="#car" class="w3-bar-item w3-button w3-padding-large">TOUR</a>
-  <a href="#contact" class="w3-bar-item w3-button w3-padding-large">CONTACT</a>
-  <a href="#map" class="w3-bar-item w3-button w3-padding-large">MAP</a>
+  <a href="${pageContext.request.contextPath}/index.jsp#ch" class="w3-bar-item w3-button w3-padding-large">ch</a>
+  <a href="${pageContext.request.contextPath}/index.jsp#car" class="w3-bar-item w3-button w3-padding-large">TOUR</a>
+  <a href="${pageContext.request.contextPath}/index.jsp#contact" class="w3-bar-item w3-button w3-padding-large">CONTACT</a>
+  <a href="${pageContext.request.contextPath}/index.jsp#map" class="w3-bar-item w3-button w3-padding-large">MAP</a>
 </div>
 
 <!-- 로그아웃  -->
 <script>
-		function logoutPro(){
-			location.href="logoutPro.jsp";
+		function logoutPro(root){
+			location.href=root+"/logoutPro.jsp";
 		}
 </script>
 

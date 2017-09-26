@@ -1,7 +1,7 @@
 <%@page import="car.dao.LoginDAO"%>
 <%@page import="car.dto.MemberVO"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--     
 <%
 	 String id = (String)request.getParameter("id");
@@ -15,6 +15,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>info</title>
+<c:set var="root" value="${pageContext.request.contextPath}"/>
 </head>
 <body>
 	<h3>개인 회원 정보 보기</h3>

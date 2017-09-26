@@ -26,7 +26,7 @@ public class StationDao {
 //		전역 변수로 계속 유지하고 있으면 메모리에 안좋기 때문에 지역 변수로 선언하는 것이 좋습니다.
 //		sql = "select * from station where station_addr=?";
 		System.out.println(sido);
-		sido = sido +"%";
+//		sido = sido +"%";
 		String sql = "SELECT * FROM station WHERE station_addr LIKE ? || '%'";
 		try {
 			c = DBUtil.getConnection();

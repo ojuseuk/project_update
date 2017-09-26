@@ -90,18 +90,14 @@ public class MemberController extends HttpServlet {
 		System.out.println(num);
 		
 		if(num == 1){
-			
+			HttpSession session = request.getSession();
 			if (id.equals("admin")) {
-				HttpSession session = request.getSession();
-				session.setAttribute("id", id);
+				session.setAttribute("admin", id);
 				url = "adminView.jsp";
+			}else{
+				session.setAttribute("id", id);
 			}
 			
-		}else if (num == 0) {
-			HttpSession session = request.getSession();
-			session.setAttribute("id", id);
-			url = "index.jsp";
-
 		}
 		System.out.println(url);
 		request.getRequestDispatcher(url).forward(request, response);

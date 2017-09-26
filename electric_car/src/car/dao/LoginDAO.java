@@ -33,7 +33,6 @@ public class LoginDAO {
 
 		String dbPW = "";
 		int x = -1;
-		String p="1111";
 		
 //		db의 password명을 password로 변경
 		String sql = "select member_password from member where member_id=?";
@@ -54,12 +53,10 @@ public class LoginDAO {
 			if (rs.next()) {
 				dbPW = rs.getString("member_password");
 				
-				if (p.equals(pwd)) {
+				if(dbPW.equals(pwd)){
 					x = 1;
-				} else if(dbPW.equals(pwd)){
-					x = 0;
 				} else{
-					x=-1;
+					x=0;
 				}
 			} 
 //			기본 값이 -1 이기 때문에 필요가 없습니다.
@@ -85,7 +82,7 @@ public class LoginDAO {
 //		전역 변수로 계속 유지하고 있으면 메모리에 안좋기 때문에 지역 변수로 선언하는 것이 좋습니다. 
 //		sql = "select * from member where id=?";
 		
-		String sql = "select * from member where id=?";
+		String sql = "select * from member where member_id=?";
 		try {
 			c = DBUtil.getConnection();
 			pstmt = c.prepareStatement(sql);

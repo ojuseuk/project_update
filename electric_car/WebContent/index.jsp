@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <title>W3.CSS Template</title>
+<c:set var="root" value="${pageContext.request.contextPath}"/>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -28,7 +29,6 @@ body {font-family: "Lato", sans-serif}
     <div class="w3-display-bottommiddle w3-container w3-text-black w3-padding-32 w3-hide-small">
       <h3>건강을 생각합니다</h3>
       <p><b>자동차 배출 가스로부터 해방</b></p>  
-      <a href="${pageContext.request.contextPath}/location/locationAdd.jsp" >충전소 추가</a> 
     </div>
   </div>
   <div class="mySlides w3-display-container w3-center">
@@ -181,39 +181,35 @@ body {font-family: "Lato", sans-serif}
     </div>
   </div>
 
-		<!-- The Q&A Section -->
-   <div  id="Q&A">
-		<form action="/action_page.php"
-			class="w3-container w3-card-4 w3-light-grey w3-text-black w3-margin">
-			<h2 class="w3-center">Q&A</h2>
-
-			<div class="w3-row w3-section">
-				<div class="w3-col" style="width: 50px">
-					<i class="w3-xxlarge fa fa-user"></i>
+<!-- The Q&A Section -->
+	<c:if test="${not empty sessionScope.id }">
+	   <div  id="Q&A">
+			<form action="${root}/FAQController" class="w3-container w3-card-4 w3-light-grey w3-text-black w3-margin">
+				<h2 class="w3-center">Q&A</h2>
+				<div class="w3-row w3-section">
+					<div class="w3-col" style="width: 50px">
+						<i class="w3-xxlarge fa fa-user"></i>
+					</div>
+					<div class="w3-rest">
+						<input class="w3-input w3-border" name="title" type="text" placeholder="title">
+					</div>
 				</div>
-				<div class="w3-rest">
-					<input class="w3-input w3-border" name="first" type="text"
-						placeholder="Name">
+				<div class="w3-row w3-section">
+					<div class="w3-col" style="width: 50px">
+						<i class="w3-xxlarge fa fa-pencil"></i>
+					</div>
+					<div class="w3-rest">
+						<textarea rows="6" class="w3-input w3-border" name="message" placeholder="Message"></textarea>
+					</div>
 				</div>
-			</div>
-
-			<div class="w3-row w3-section">
-				<div class="w3-col" style="width: 50px">
-					<i class="w3-xxlarge fa fa-pencil"></i>
-				</div>
-				<div class="w3-rest">
-					<input class="w3-input w3-border" name="message" type="text"
-						placeholder="Message">
-				</div>
-			</div>
-
-			<p class="w3-center">
-				<button class="w3-button w3-section w3-black w3-ripple">
-					Send</button>
-			</p>
-		</form>
-    </div>
-
+	
+				<input type="hidden" name="command" value="FAQAdd">
+				<p class="w3-center">
+					<button formaction="${root}/FAQController" class="w3-button w3-section w3-black w3-ripple" > Send</button>
+				</p>
+			</form>
+	    </div>
+	</c:if>
 
 		<!-- End Page Content -->
 		</div>

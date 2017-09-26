@@ -5,6 +5,7 @@
 <html>
 <head>
 <title>W3.CSS Template</title>
+<c:set var="root" value="${pageContext.request.contextPath}"/>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -19,29 +20,7 @@ body {font-family: "Lato", sans-serif}
 <body>
 
 <!-- Navbar -->
-<div class="w3-top">
-  <div class="w3-bar w3-black w3-card-2">
-    <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-    <a href="#" class="w3-bar-item w3-button w3-padding-large">HOME</a>
-    <a href="#ch" class="w3-bar-item w3-button w3-padding-large w3-hide-small">충전소</a>
-    <a href="#car" class="w3-bar-item w3-button w3-padding-large w3-hide-small">전기차</a>
-    <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hide-small">CONTACT</a>
-    <a href="#map" class="w3-bar-item w3-button w3-padding-large w3-hide-small">MAP</a>
-    
-    <div class="w3-dropdown w3-hide-small w3-right">
-    		 <!-- 경로 설정에 편하다 -->
-    <a href="${pageContext.request.contextPath}/logSc?command=info" class="w3-bar-item w3-button w3-padding-large w3-hide-small" >개인정보</a>
-    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-large w3-hide-small" onclick="logoutPro()">로그아웃</a>   
-    </div>
-  </div>
-</div>
-<!-- Navbar on small screens -->
-<div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px">
-  <a href="#ch" class="w3-bar-item w3-button w3-padding-large">ch</a>
-  <a href="#car" class="w3-bar-item w3-button w3-padding-large">TOUR</a>
-  <a href="#contact" class="w3-bar-item w3-button w3-padding-large">CONTACT</a>
-  <a href="#map" class="w3-bar-item w3-button w3-padding-large">MAP</a>
-</div>
+<jsp:include page="nav.jsp"></jsp:include>
 
 <!-- Page content -->
 <div class="w3-content" style="max-width:2000px;margin-top:46px">

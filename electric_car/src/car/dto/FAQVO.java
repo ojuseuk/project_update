@@ -5,51 +5,80 @@ package car.dto;
 public class FAQVO {
 
 	/* 변수 */
-	private int FAQNum;
-	private String FAQName;
-	private String FAQContent;
+	private int fAQNum;
+	private String fAQName;
+	private String fAQContent;
+	private String id;
 	
-	/* 생성자 */
-	public FAQVO() {}
-	public FAQVO(int fAQNum, String fAQName, String fAQContent) {
+	/** 기본 생성자 */
+	public FAQVO() {
+		// TODO Auto-generated constructor stub
+	}
+
+	/** 생성자 */
+	public FAQVO(int fAQNum, String fAQName, String fAQContent, String id) {
 		super();
-		FAQNum = fAQNum;
-		FAQName = fAQName;
-		FAQContent = fAQContent;
+		this.fAQNum = fAQNum;
+		this.fAQName = fAQName;
+		this.fAQContent = fAQContent;
+		this.id = id;
 	}
-	
-	/* 접근자, 수정자 */
-	public int getFAQNum() {
-		return FAQNum;
+
+	/** data 추가할때 사용 하는 생성자 */
+	public FAQVO(String fAQName, String fAQContent, String id) {
+		super();
+		this.fAQName = fAQName;
+		this.fAQContent = fAQContent;
+		this.id = id;
 	}
-	public void setFAQNum(int fAQNum) {
-		FAQNum = fAQNum;
+
+	public int getfAQNum() {
+		return fAQNum;
 	}
-	public String getFAQName() {
-		return FAQName;
+
+	public void setfAQNum(int fAQNum) {
+		this.fAQNum = fAQNum;
 	}
-	public void setFAQName(String fAQName) {
-		FAQName = fAQName;
+
+	public String getfAQName() {
+		return fAQName;
 	}
-	public String getFAQContent() {
-		return FAQContent;
+
+	public void setfAQName(String fAQName) {
+		this.fAQName = fAQName;
 	}
-	public void setFAQContent(String fAQContent) {
-		FAQContent = fAQContent;
+
+	public String getfAQContent() {
+		return fAQContent;
 	}
-	
-	/* 함수 */
+
+	public void setfAQContent(String fAQContent) {
+		this.fAQContent = fAQContent;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("FAQ [FAQNum=");
-		builder.append(FAQNum);
-		builder.append(", FAQName=");
-		builder.append(FAQName);
-		builder.append(", FAQContent=");
-		builder.append(FAQContent);
+		builder.append("FAQVO [fAQNum=");
+		builder.append(fAQNum);
+		builder.append(", fAQName=");
+		builder.append(fAQName);
+		builder.append(", fAQContent=");
+		builder.append(fAQContent);
+		builder.append(", id=");
+		builder.append(id);
 		builder.append("]");
 		return builder.toString();
 	}
 	
+	
+
 }//end of FAQ

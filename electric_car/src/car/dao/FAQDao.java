@@ -45,7 +45,7 @@ public class FAQDao {
 			rs = ps.executeQuery();
 			
 			while(rs.next())
-				list.add(new FAQVO(rs.getInt("faq_num"),rs.getString("faq_name"),rs.getString("faq_content")));
+				list.add(new FAQVO(rs.getInt("faq_num"),rs.getString("faq_name"),rs.getString("faq_content"), rs.getString("id")));
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -75,7 +75,7 @@ public class FAQDao {
 			rs = ps.executeQuery();
 			
 			if(rs.next()) 
-				f = new FAQVO(rs.getInt("faq_num"),rs.getString("faq_name"),rs.getString("faq_content"));
+				f = new FAQVO(rs.getInt("faq_num"),rs.getString("faq_name"),rs.getString("faq_content"), rs.getString("id"));
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -88,4 +88,31 @@ public class FAQDao {
 		
 	}//end of GetFAQ
 	
+	/** 사용자가 FAQ에 정보를 입력했을때 FAQ에 정보가 추가되는 메소드 */
+	public static int faqAdd(String title, String message, String id) throws SQLException{
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		int num = 0;
+		
+		try {
+			con = DBUtil.getConnection();
+			pstmt = con.prepareStatement("insert into faq values(faq_seq.nextval, ?, ?, ?)");
+			
+			pstmt.setString(1, title);
+			pstmt.setString(2, message);
+			pstmt.setString(3, id);
+			
+			num = pstmt.executeUpdate();
+			
+			
+		} finally {
+			DBUtil.close(con, pstmt);
+		}
+
+		return num;
+		
+	}//end of faqAdd
+	
 }//end of FAQDao
+
