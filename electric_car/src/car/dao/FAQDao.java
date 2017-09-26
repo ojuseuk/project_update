@@ -41,11 +41,11 @@ public class FAQDao {
 		try {
 			
 			c = DBUtil.getConnection();
-			ps = c.prepareStatement("select * from faq");
+			ps = c.prepareStatement("select * from FAQ");
 			rs = ps.executeQuery();
 			
 			while(rs.next())
-				list.add(new FAQVO(rs.getInt("faq_num"),rs.getString("faq_name"),rs.getString("faq_content")));
+				list.add(new FAQVO(rs.getInt("faq_num"),rs.getString("faq_name"),rs.getString("faq_content"),rs.getString("member_id")));
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -75,7 +75,7 @@ public class FAQDao {
 			rs = ps.executeQuery();
 			
 			if(rs.next()) 
-				f = new FAQVO(rs.getInt("faq_num"),rs.getString("faq_name"),rs.getString("faq_content"));
+				f = new FAQVO(rs.getInt("faq_num"),rs.getString("faq_name"),rs.getString("faq_content"),rs.getString("member_id"));
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

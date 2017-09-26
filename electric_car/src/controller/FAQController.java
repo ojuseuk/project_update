@@ -40,7 +40,7 @@ public class FAQController extends HttpServlet {
 		FAQVO f = fd.getFAQ(num);
 		request.setAttribute("f", f);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("faq/faqDetail.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("faqDetail.jsp");
 		rd.forward(request, response);
 		
 	}//end of detail
@@ -53,7 +53,7 @@ public class FAQController extends HttpServlet {
 		
 		request.setAttribute("flist",list);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("faq/faq.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("info.jsp");
 		rd.forward(request, response);
 		
 	}//end of getList

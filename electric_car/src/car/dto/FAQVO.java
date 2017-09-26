@@ -8,17 +8,22 @@ public class FAQVO {
 	private int FAQNum;
 	private String FAQName;
 	private String FAQContent;
+	private String id;
 	
 	/* 생성자 */
-	public FAQVO() {}
-	public FAQVO(int fAQNum, String fAQName, String fAQContent) {
+	public FAQVO() {
+		// TODO Auto-generated constructor stub
+	}
+	public FAQVO(int fAQNum, String fAQName, String fAQContent, String id) {
 		super();
 		FAQNum = fAQNum;
 		FAQName = fAQName;
 		FAQContent = fAQContent;
+		this.id = id;
 	}
 	
 	/* 접근자, 수정자 */
+
 	public int getFAQNum() {
 		return FAQNum;
 	}
@@ -37,19 +42,32 @@ public class FAQVO {
 	public void setFAQContent(String fAQContent) {
 		FAQContent = fAQContent;
 	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	
 	
 	/* 함수 */
+	
+	
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("FAQ [FAQNum=");
+		builder.append("FAQVO [FAQNum=");
 		builder.append(FAQNum);
 		builder.append(", FAQName=");
 		builder.append(FAQName);
 		builder.append(", FAQContent=");
 		builder.append(FAQContent);
+		builder.append(", id=");
+		builder.append(id);
 		builder.append("]");
 		return builder.toString();
 	}
+	
+
 	
 }//end of FAQ

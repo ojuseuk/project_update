@@ -296,7 +296,12 @@ window.onclick = function(event) {
 }
 </script>
 
-
+<!-- 로그아웃  -->
+<script>
+		function logoutPro(){
+			location.href="logoutPro.jsp";
+		}
+</script>
 
 </body>
 </html>
