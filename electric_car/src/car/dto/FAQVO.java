@@ -19,6 +19,8 @@ public class FAQVO {
 	public FAQVO() {
 	}
 
+	/** admin 생성자 */
+
 	/** 생성자 */
 	public FAQVO(int fAQNum, String fAQName, String fAQContent, String memberId, String adminId, String adminName,
 			String adminContext) {
@@ -32,6 +34,15 @@ public class FAQVO {
 		this.AdminContext = adminContext;
 	}
 	
+	public FAQVO(String adminId, String adminName, String adminContext, int fAQNum) {
+		super();
+		
+		this.AdminId = adminId;
+		this.AdminName = adminName;
+		this.AdminContext = adminContext;
+		this.fAQNum = fAQNum;
+	}
+
 	/** data 추가할때 사용 하는 생성자 */
 	public FAQVO(int fAQNum, String fAQName, String fAQContent, String memberId) {
 		super();
@@ -41,6 +52,8 @@ public class FAQVO {
 		this.MemberId = memberId;
 
 	}
+	
+	
 	
 	// 관리자가 답변한 내용을 보기 위한 생성자
 	public FAQVO(String adminId, String adminName, String adminContext) {

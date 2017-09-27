@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import car.dto.FAQVO;
+import car.dto.MemberVO;
 import car.util.DBUtil;
 
 /** FAQ Table과 연동하기 위한 클래스 */
@@ -59,6 +60,40 @@ public class FAQDao {
 		return list;
 		
 	}//end of getList
+	
+	
+	/**답변 update*/
+
+	public static int update(FAQVO fv) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		int num = 0;
+		String sql = "UPDATE faq SET admin_name=?, admin_context=?,admin_id=? WHERE faq_num = ?";
+		try {
+			con = DBUtil.getConnection();
+
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, fv.getAdminName());
+			pstmt.setString(2, fv.getAdminContext());
+			pstmt.setString(3, fv.getAdminId());
+			pstmt.setInt(4, fv.getfAQNum());
+			
+
+			num = pstmt.executeUpdate();
+
+		} catch (SQLException s) {
+			s.printStackTrace();
+			throw s;
+		} finally {
+			DBUtil.close(con, pstmt);
+		}
+		
+		return num;
+	}
+
+
+	
+	
 	
 	/** FAQ 번호와 일치하는 FAQ 객체 가져오기 */
 	public FAQVO getFAQ(int num) {

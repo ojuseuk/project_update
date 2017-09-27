@@ -80,6 +80,7 @@ public class LoginDAO {
 	}// end of loginCheck
 
 	/** 개인정보 화면에 개인정보와 FAQ 질문과 답변을 받기위해 정보를 가져오는 메소드 */
+	/** 회원 수정 정보와 함께 FAQ 가져오기 */
 	public Map<MemberVO, List<FAQVO>> getUserInfo(String id) {
 
 		Connection c = null;

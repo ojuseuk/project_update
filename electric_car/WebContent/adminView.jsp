@@ -16,6 +16,9 @@
 <style>
 .w3-sidebar a {font-family: "Roboto", sans-serif}
 body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
+ a:link {text-decoration: none;}
+
+출처: http://it77.tistory.com/126 [시원한물냉의 사람사는 이야기]
 </style>
 <script type="text/javascript">
 function noEvent() { // 새로 고침 방지
@@ -37,7 +40,7 @@ document.onkeydown = noEvent;
 <nav class="w3-sidebar w3-bar-block w3-white w3-collapse w3-top" style="z-index:3;width:250px" id="mySidebar">
   <div class="w3-container w3-display-container w3-padding-16">
     <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
-    <h3 class="w3-wide"><b>Team 3</b></h3>
+    <a href="adminView.jsp"><h3 class="w3-wide"><b>Team 3</b></h3></a>
   </div>
   <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
  
@@ -50,7 +53,8 @@ document.onkeydown = noEvent;
       <a href="#" class="w3-bar-item w3-button w3-light-grey" onclick="locationList('${root}')"><i class="fa fa-caret-right w3-margin-right"></i>목록 보기</a>
 <%--       ${root}/loc?command=updateList --%>
     </div>
-    <a href="#" class="w3-bar-item w3-button">문의게시판</a>
+    
+    <a href="${pageContext.request.contextPath}/FAQController?command=getList" class="w3-bar-item w3-button">문의게시판</a>
     
   
   </div>
