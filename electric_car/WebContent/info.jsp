@@ -35,15 +35,14 @@ html, body, h1, h2, h3, h4, h5, h6 {
 /** right */
 </style>
 </head>
-
-<body class="w3-light-grey">
-	<form action="${pageContext.request.contextPath}/logSc" method="post">
+<body class="w3-light-grey" >
+<jsp:include page="nav.jsp"/>
+	<form action="${root}/logSc" method="post">
 		<!-- Page Container -->
-		<div class="w3-content w3-margin-top"
-			style="max-width: 1400px; margin-left: 10px;">
+		<div class="w3-content w3-margin-top" style="max-width: 1400px; margin-left: 10px;" >
 
 			<!-- The Grid -->
-			<div class="w3-row-padding">
+			<div class="w3-row-padding"  style="margin-top: 45px;">
 
 				<!-- Left Column -->
 				<div class="w3-third">
@@ -94,7 +93,7 @@ html, body, h1, h2, h3, h4, h5, h6 {
 
 							<input type="hidden" name="command" value="update"> <input
 								type="submit" value="수정"> <a
-								href="${pageContext.request.contextPath}/loginView.jsp">뒤로</a> <br>
+								href="${root}/loginView.jsp">뒤로</a> <br>
 							<br>
 
 						</div>
@@ -109,11 +108,11 @@ html, body, h1, h2, h3, h4, h5, h6 {
 	</form>
 	
 	<!-- Right Column -->
-	<form action="${pageContext.request.contextPath}/logSc" method="post">
+	<form action="${root}/logSc" method="post">
 		<div class="w3-twothird w3-display-topright w3-margin-top" id="right"
-			style="margin-right: 10px;">
+			style="margin-right: 10px; ">
 
-			<div class="w3-container w3-card-2 w3-white w3-margin-bottom">
+			<div class="w3-container w3-card-2 w3-white w3-margin-bottom" style="margin-top: 40px;">
 				<h2 class="w3-text-grey w3-padding-16">
 					<i class="fa fa-lightbulb-o fa-fw w3-margin-right w3-xxlarge w3-text-teal">Q&A</i>
 				</h2>
@@ -155,15 +154,11 @@ html, body, h1, h2, h3, h4, h5, h6 {
 					</header>
 				</div>
 			</div>
-			<br>
-			<br>
-			<br>
-			<br>
-			<!-- End Right Column -->
-
+			<br><br><br><br>
 			<!-- End Right Column -->
 		</div>
 	</form>
+	<jsp:include page="footer.jsp"/>
 	<script type="text/javascript" src="${root}/script/httpRequest.js"></script>
 	<script type="text/javascript">
 		function one(root, fAQNum){
@@ -180,8 +175,6 @@ html, body, h1, h2, h3, h4, h5, h6 {
 				document.getElementById("answer").innerHTML = httpRequest.responseText;
 			}
 		}
-		
-	
 	</script>
 </body>
 </html>

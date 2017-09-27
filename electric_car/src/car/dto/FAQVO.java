@@ -6,9 +6,11 @@ public class FAQVO {
 
 	/* 변수 */
 	private int fAQNum;
+	
 	private String fAQName;
 	private String fAQContent;
 	private String MemberId;
+	
 	private String AdminId;
 	private String AdminName;
 	private String AdminContext;

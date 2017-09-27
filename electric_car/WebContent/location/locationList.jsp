@@ -10,7 +10,7 @@
 </head>
 <body>
 	<c:set var="root" value="${pageContext.request.contextPath}" />
-	<div class="w3-container" style="background-color: white;">
+	<div class="w3-container" style="background-color: white; width: 1000px;">
 		<table class="w3-table w3-bordered">
 			<tr>
 				<td>충전소명</td>
@@ -25,9 +25,9 @@
 					<td>${requestScope.list[i].addr}</td>
 					<td>${requestScope.list[i].cpnm}</td>
 					<td><button
-							onclick="location.href='${pageContext.request.contextPath}/loc?command=updateDetail&station_num=${requestScope.list[i].id}'">수정하기</button></td>
+							onclick="location.href='${root}/loc?command=updateDetail&station_num=${requestScope.list[i].id}'">수정</button></td>
 					<td><button
-							onclick="location.href='${pageContext.request.contextPath}/loc?command=delete&station_num=${requestScope.list[i].id}'">삭제하기</button></td>
+							onclick="location.href='${root}/loc?command=delete&station_num=${requestScope.list[i].id}'">삭제</button></td>
 				</tr>
 			</c:forEach>
 		</table>

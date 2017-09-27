@@ -12,6 +12,7 @@ public class UpdateDao {
 
 	private static String sql;
 
+	/** 회원정보 수정을 위한 메소드*/
 	public static int update(MemberVO mem) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;

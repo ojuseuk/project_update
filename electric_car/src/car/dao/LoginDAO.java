@@ -30,6 +30,7 @@ public class LoginDAO {
 //	전역 변수로 계속 유지하고 있으면 메모리에 안좋기 때문에 지역 변수로 선언하는 것이 좋습니다.
 //	private static String sql;
 
+	/** 로그인할 때 아이디와 비밀번호가 맞는지 확인하는 메소드 */
 	public int loginCheck(String id, String pwd) {
 
 		Connection con = null;
@@ -76,8 +77,9 @@ public class LoginDAO {
 		}
 		return x;
 
-	}
+	}// end of loginCheck
 
+	/** 개인정보 화면에 개인정보와 FAQ 질문과 답변을 받기위해 정보를 가져오는 메소드 */
 	public Map<MemberVO, List<FAQVO>> getUserInfo(String id) {
 
 		Connection c = null;
@@ -130,5 +132,33 @@ public class LoginDAO {
 		}
 		return map;
 
-	}
+	}// end of getUserInfo
+	
+	/** id중복체크를 위한 메소드 
+	 * @throws SQLException */
+	public static int idcheck(String id) throws SQLException {
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		int num = 0;
+		ResultSet rs = null;
+		String str = null;
+		
+		try {
+			con = DBUtil.getConnection();
+			pstmt = con.prepareStatement("select count(*) from member where member_id = ?");
+			pstmt.setString(1, id);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				num = rs.getInt(1);
+			}
+			
+		} finally {
+			DBUtil.close(con, pstmt);
+		}
+		
+		return num;
+	}// end of idcheck
 }

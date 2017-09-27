@@ -6,13 +6,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<c:set var="root" value="${pageContext.request.contextPath}"/>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 <div id="id01" class="w3-modal">
-	<form action="${pageContext.request.contextPath}/loc" method="post"
+	<form action="${root}/loc" method="post"
 		class="w3-container w3-card-4 w3-light-grey w3-text-blue w3-margin">
 
 		<h2 class="w3-center">충전소 정보 추가</h2>
@@ -22,11 +22,9 @@
 				<i class="w3-xxlarge fa fa-car"></i>
 			</div>
 			<div class="w3-rest">
-				<input class="w3-input w3-border" type="text" name="station_csnm"
-					placeholder="충전소 이름">
+				<input class="w3-input w3-border" type="text" name="station_csnm" placeholder="충전소 이름">
 			</div>
 		</div>
-
 
 		<div class="w3-row w3-section">
 			<div class="w3-col" style="width: 50px">
@@ -69,9 +67,9 @@
 		</div>
 
 		<p class="w3-center">
-			<input type="hidden" name="command" value="add"> <input
-				type="submit" class="w3-button w3-section w3-blue w3-ripple"
-				value="추가"></input>
+			<input type="hidden" name="command" value="add">
+			<input type="submit" class="w3-button w3-section w3-blue w3-ripple" value="추가"></input>
+			<button onclick="document.getElementById('id01').style.display='none'" type="button" class="w3-button w3-section w3-blue w3-ripple">취소</button>
 		</p>
 	</form>
 </div>

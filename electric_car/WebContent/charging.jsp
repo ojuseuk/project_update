@@ -11,7 +11,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/w3.css">
+	href="${root}/css/w3.css">
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Lato">
 <link rel="stylesheet"
@@ -22,7 +22,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="${pageContext.request.contextPath}/js/location2.js"></script>
+<script src="${root}/js/location2.js"></script>
 <style>
 body {
 	font-family: "Lato", sans-serif
@@ -37,7 +37,6 @@ body {
 }
 </style>
 </head>
-<c:set var="root" value="${pageContext.request.contextPath}"/>
 <body>
 	<jsp:include page="nav.jsp" />
 	<div class="w3-row-padding w3-content" style="max-width: 1400px; margin-top: 75px;" id="ab">
@@ -82,13 +81,13 @@ body {
 						<span
 							style="font-weight: bolder; font: 14px; float: left; padding-left: 5px;">충전소
 							분류</span>
-						<form action="${pageContext.request.contextPath}/loc"
+						<form <%-- action="${root}/loc" --%>
 							method="post">
 							<input type="hidden" name="command" value="csNm"> <input
 								type="text" name=key_search id="STAT_NAME"
 								placeholder="검색어 입력해주세요." title="검색어를 입력바랍니다."
 								style="width: 150px; margin-top: 20px; margin-left: 5px; border: 1px solid #c0c0be;">
-							<input type="submit" value="조회">
+							<img src="./images/reading_glass.gif" alt="조회 버튼" onclick="keySearch('${root}')">
 						</form>
 						<br style="line-height: 20px;"> <a href="#"
 							class="bt_spot_detail"
@@ -98,7 +97,7 @@ body {
 				</div>
 			</div>
 			<br>
-			<div class="w3-container w3-light-grey w3-justify">
+			<div class="w3-container w3-light-grey w3-justify" id="def">
 				<h2>충전소</h2>
 				<div id = "a">
 				<div style="overflow: scroll;  height: 550px;">
@@ -112,7 +111,7 @@ body {
 						</thead>
 						<c:forEach items="${list}" var="data" varStatus="i">
 							<tbody>
-								<tr>
+								<tr onclick="keySearch2('${root}', '${data.csnm}')">
 									<td>${data.csnm}</td>
 									<td>${data.addr}</td>
 									<td>${data.cpnm}</td>

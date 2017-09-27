@@ -22,7 +22,7 @@ function markerAddress(location) {
 				position : results[0].geometry.location
 				
 			});
-			alert(results[0].geometry.location);
+//			alert(results[0].geometry.location);
 			var s=String(results[0].geometry.location);
 			var s=s.replace("(", "");
 			var s=s.replace(")", "");

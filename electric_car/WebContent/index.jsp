@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/login.css">
+<link rel="stylesheet" href="${root}/css/login.css">
 <style>
 body {font-family: "Lato", sans-serif}
 .mySlides {display: none}
@@ -55,7 +55,7 @@ body {font-family: "Lato", sans-serif}
       <div class="w3-third ">
     		 <div class="w3-third ">
         <p>충전소 찾기 이동</p>
-        <a href="${pageContext.request.contextPath}/loc?command=all"><img src="./images/car4.PNG" class="w3-round w3-margin-bottom "  alt="Random Name" style="width:100%"></a>
+        <a href="${root}/loc?command=all"><img src="./images/car4.PNG" class="w3-round w3-margin-bottom "  alt="Random Name" style="width:100%"></a>
       	</div>
       </div>
     </div>
@@ -222,7 +222,7 @@ body {font-family: "Lato", sans-serif}
 <!-- 로그인 -->
 <div id="id01" class="modal">
   
-  <form class="modal-content animate" action="${pageContext.request.contextPath}/logSc" method="post">
+  <form class="modal-content animate" action="${root}/logSc" method="post">
     <div class="imgcontainer">
       <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
       <img src="img_avatar2.png" alt="로그인" class="avatar">
@@ -250,14 +250,20 @@ body {font-family: "Lato", sans-serif}
 <!-- 회원가입 -->
 <div id="id02" class="modal">
   <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">×</span>
-  <form class="modal-content animate" action="${pageContext.request.contextPath}/logSc">
+  <form class="modal-content animate" action="${root}/logSc" name="f">
     <div class="container">
       <label><b>아이디</b></label>
       <input type="hidden" name="command" value="join">
-      <input type="text" placeholder="아이디" name="id" required>
-
+      <input type="text" placeholder="아이디" name="id" required id="id" onchange="checkAdmin('${root}');">
+	  <label id="idcheck" ></label>
+	  <br>
       <label><b>비밀번호</b></label>
-      <input type="password" placeholder="비밀번호" name="password" required>
+      <input type="password" placeholder="비밀번호" name="pwd" required>
+      
+      <label><b>비밀번호 확인</b></label>
+      <input type="password" placeholder="비밀번호 확인" name="password" required onchange="checkPwd();">
+      <label id="pwdCheck"></label>
+      <br>
       
       <label><b>이름</b></label>
       <input type="text" placeholder="이름" name="name" required>
@@ -375,6 +381,7 @@ window.onclick = function(event) {
     }
 }
 </script>
-
+<script src="${root}/script/httpRequest.js"></script>
+<script src="${root}/js/join.js"></script>
 </body>
 </html>

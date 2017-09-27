@@ -49,6 +49,7 @@ public class LocationInfo extends HttpServlet {
 		}
 	}
 	
+	/** 주요도시에 있는 충전소 정보와 위치를 출력하기 위한 메소드 */
 	public void getCode(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String sido = request.getParameter("SI_DO");
 		System.out.println(sido);
@@ -72,6 +73,7 @@ public class LocationInfo extends HttpServlet {
 		map.put("전라남도", "34.819400/126.893113");
 		map.put("제주특별자치도", " 33.364805/126.542671");
 		ArrayList<StationVO> staList = StationDao.infoStation(sido);
+		request.setAttribute("sido", sido);
 		request.setAttribute("map", map.get(sido));
 		request.setAttribute("staList", staList);
 		request.setAttribute("msg", "msg");
@@ -79,6 +81,7 @@ public class LocationInfo extends HttpServlet {
 		
 	}
 	
+	/** 선택된 하나의 충전소 정보와 위치를 출력하기 위한 메소드 */
 	public void getCsinfo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String keyName = request.getParameter("key_search").trim();
 		System.out.println(keyName);
@@ -86,7 +89,7 @@ public class LocationInfo extends HttpServlet {
 		System.out.println(st.getCsnm());
 		
 		request.setAttribute("st", st);
-		request.getRequestDispatcher("detailView.jsp").forward(request, response);
+		request.getRequestDispatcher("location/detail.jsp").forward(request, response);
 	}
 	
 	/**

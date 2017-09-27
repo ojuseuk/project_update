@@ -10,7 +10,7 @@
 <c:set var="root" value="${pageContext.request.contextPath}"/>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/w3.css">
+<link rel="stylesheet" href="${root}/css/w3.css">
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Lato">
 <link rel="stylesheet"
@@ -21,7 +21,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="${pageContext.request.contextPath}/js/location2.js"></script>
+<script src="${root}/js/location2.js"></script>
 <style>
 body {
 	font-family: "Lato", sans-serif
@@ -51,7 +51,7 @@ body {
 				<h2>충전소 검색</h2>
 				<div >
 					<div>
-						<form action="${pageContext.request.contextPath}/loc"
+						<form action="${root}/loc"
 							method="post">
 							<span style="font-weight: bolder; font: 14px; float: left; padding-left: 5px;">지역 선택</span> <br style="line-height: 1.5;"> 
 							<input type="hidden" name="command" value="sido">
@@ -84,7 +84,7 @@ body {
 						<span
 							style="font-weight: bolder; font: 14px; float: left; padding-left: 5px;">충전소
 							분류</span>
-						<form action="${pageContext.request.contextPath}/loc"
+						<form action="${root}/loc"
 							method="post">
 							<input type="hidden" name="command" value="csNm">
 							<input type="text" name=key_search id="STAT_NAME" placeholder="검색어 입력해주세요." title="검색어를 입력바랍니다." style="width: 150px; margin-top: 20px; margin-left: 5px; border: 1px solid #c0c0be;">
@@ -112,7 +112,7 @@ body {
 						<c:forEach items="${staList}" var="data" varStatus="i">
 							<tbody>
 								<tr>
-									<td><a href = "${pageContext.request.contextPath}/loc?command=csNm&key_search=${data.csnm}">${data.csnm}</a></td>
+									<td><a href = "${root}/loc?command=csNm&key_search=${data.csnm}">${data.csnm}</a></td>
 									<td>${data.addr}</td>
 									<td>${data.cpnm}</td>
 								</tr>

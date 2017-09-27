@@ -45,10 +45,10 @@ document.onkeydown = noEvent;
       충전소 <i class="fa fa-caret-down"></i>
     </a>
     <div id="demoAcc" class="w3-bar-block w3-hide w3-padding-large w3-medium">
-      <a onclick="document.getElementById('id01').style.display='block'" href="#" class="w3-bar-item w3-button w3-light-grey" ><i class="fa fa-caret-right w3-margin-right"></i>추가</a>
+      <a onclick="document.getElementById('id01').style.display='block'" href="#" class="w3-bar-item w3-button w3-light-grey"><i class="fa fa-caret-right w3-margin-right"></i>추가</a>
       <jsp:include page="location/locationAdd.jsp"/>
       <a href="#" class="w3-bar-item w3-button w3-light-grey" onclick="locationList('${root}')"><i class="fa fa-caret-right w3-margin-right"></i>목록 보기</a>
-<%--       ${pageContext.request.contextPath}/loc?command=updateList --%>
+<%--       ${root}/loc?command=updateList --%>
     </div>
     <a href="#" class="w3-bar-item w3-button">문의게시판</a>
     
@@ -81,7 +81,7 @@ document.onkeydown = noEvent;
     <div class="w3-display-topleft w3-text-black" style="padding:24px 48px">
       <h1 class="w3-hide-small">관리자 페이지</h1>
     </div>
-    <div class="w3-display-topleft w3-text-black" id="list" style="margin: 100px 0px 0px 90px; ">
+    <div class="w3-display-topleft w3-text-black" id="list" style="margin: 100px 0px 0px -20px; ">
     </div>
   </div>
 
@@ -118,7 +118,7 @@ function w3_close() {
 }
 </script>
 
-<script type="text/javascript" src="${pageContext.request.contextPath}/script/httpRequest.js"></script>
+<script type="text/javascript" src="${root}/script/httpRequest.js"></script>
 <script type="text/javascript">
 	function locationList(root){
 		url = root + "/loc";
@@ -152,7 +152,7 @@ function w3_close() {
 		}
 </script>
 <script type="text/javascript">
-// ${pageContext.request.contextPath}/location/locationAdd.jsp
+// ${root}/location/locationAdd.jsp
 
 </script>
 </body>

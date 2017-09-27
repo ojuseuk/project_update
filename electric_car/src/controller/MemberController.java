@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import car.dao.AdminDAO;
 import car.dao.FAQDao;
 import car.dao.JoinDao;
 import car.dao.LoginDAO;
@@ -42,32 +43,13 @@ public class MemberController extends HttpServlet {
 		} else if (command.equals("info")) {
 			System.out.println("개인정보");
 			info(request, response);
-		} else if (command.equals("getList")) {
-			System.out.println("Q&A리스트");
-			getList(request, response);
-		}
+		} else if (command.equals("check")){
+			getCheck(request, response);
+		} 
 		
 	}
-
-	private void getList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		
-		
-		/** Q&A 정보 가져오기 */
-		FAQDao fd = FAQDao.getInstance();
-		List<FAQVO> list = fd.getList();
-		
-		System.out.println(list.toString());
-		
-		request.setAttribute("flist",list);
-			
-		RequestDispatcher rd = request.getRequestDispatcher("info.jsp");
-		rd.forward(request, response);
-		System.out.println("Q&A리스트");
-	
-	}
-	
-		
+	/** 개인정보와 FAQ 질문과 답변을 확인할수 있는 개인정보 페이지를 가기위한 메소드 */
 	private void info(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		// session에 저장중인 id를 가져와서 id에 넣어주는 소스입니다.
@@ -104,9 +86,10 @@ public class MemberController extends HttpServlet {
 
 		request.getRequestDispatcher(url).forward(request, response);
 		
-	}
+	}// end of info
 	
 
+	/** 로그인을 위한 메소드 (admin과 member)로그인을 따로구분 */
 	private void login(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
 		String id = request.getParameter("id");
@@ -116,15 +99,25 @@ public class MemberController extends HttpServlet {
 		// MemberVO loginMember = new MemberVO();
 		// loginMember.setId(id);
 		// loginMember.setPassword(password);
-		String url = "index.jsp";
+		String url = "error.jsp";
 
 		// 아래 처럼 getInstance를 사용할경우 그 안에 있는 어떤 함수를 불러 올지 사용해주어야 합니다.
 		// LoginDAO.getInstance();
 		// request.setAttribute("id", id);
 		// request.setAttribute("pwd", password);
-
+		int num =0;
 		/** 수정한 부분 */
-		int num = LoginDAO.getInstance().loginCheck(id, password);
+		String idCheck = id.substring(0, 5);
+		try {
+			if(idCheck.equals("admin")){
+					num = AdminDAO.loginCheck(id, password);
+			}else{
+				num = LoginDAO.getInstance().loginCheck(id, password);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		/** 만약 id가 admin이고 password가 1111이면 adminView.jsp로 이동한다  */
 		System.out.println(num);
 		
@@ -135,14 +128,16 @@ public class MemberController extends HttpServlet {
 				url = "adminView.jsp";
 			}else{
 				session.setAttribute("id", id);
+				url = "index.jsp";
 			}
 			
 		}
 		System.out.println(url);
 		request.getRequestDispatcher(url).forward(request, response);
 
-	}
+	}//end of login
 
+	/** 회원가입을 위한 메소드 */
 	public void insertMember(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -164,8 +159,9 @@ public class MemberController extends HttpServlet {
 			e.printStackTrace();
 		}
 		request.getRequestDispatcher(url).forward(request, response);
-	}
+	}// end of insertMember
 
+	/** 회원정보 수정을 위한 메소드 */
 	private void update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		MemberVO mem = new MemberVO(request.getParameter("id").trim(), request.getParameter("password").trim(),
 				request.getParameter("name").trim(), request.getParameter("email").trim(),
@@ -184,5 +180,30 @@ public class MemberController extends HttpServlet {
 			request.setAttribute("error", "에러");
 		}
 		request.getRequestDispatcher(url).forward(request, response);
-	}
+	} // end of update
+	
+	/** 아이디 중복 확인을 위한 메소드 */
+	private void getCheck(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String id = request.getParameter("id");
+		System.out.println(id);
+		String url ="error.jsp";
+		
+		try {
+			int num = LoginDAO.idcheck(id);
+			
+			if(num == 1){
+				url="login/idcheck.jsp";
+				request.setAttribute("msg", "아이디가 존재합니다.");
+			}else if(num == 0){
+				url="login/idcheck.jsp";
+				request.setAttribute("msg", "아이디가 존재하지않습니다.");
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		request.getRequestDispatcher(url).forward(request, response);
+	}// end of getCheck
 }
