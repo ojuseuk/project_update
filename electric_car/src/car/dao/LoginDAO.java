@@ -77,7 +77,7 @@ public class LoginDAO {
 		return x;
 
 	}
-
+	/** 회원 수정 정보와 함께 FAQ 가져오기 */
 	public Map<MemberVO, List<FAQVO>> getUserInfo(String id) {
 
 		Connection c = null;
