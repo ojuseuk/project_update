@@ -25,16 +25,16 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 }
 
 th {
-	background-color: #004d4d;
+	background-color: #000033;
 	color: white;
 }
 
 tr {
-	background-color: #ccffcc;
+	background-color: #e6e6ff;
 	color: black;
 }
 td {
-	background-color: #ccffcc;
+	background-color: #e6e6ff;
 	color: black;
 }
 .button {
