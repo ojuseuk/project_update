@@ -46,7 +46,7 @@ function meMap() {
 	alert(latLng[0] + " / " + latLng[1]);
 	
 	map = new google.maps.Map(document.getElementById("map"), {
-		zoom : 9,
+		zoom : 11,
 		center : {
 			lat : Number(latLng[0]),
 			lng : Number(latLng[1]),

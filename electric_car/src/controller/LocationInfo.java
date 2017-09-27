@@ -75,8 +75,7 @@ public class LocationInfo extends HttpServlet {
 		request.setAttribute("map", map.get(sido));
 		request.setAttribute("staList", staList);
 		request.setAttribute("msg", "msg");
-		System.out.println(4);
-		request.getRequestDispatcher("location/context.jsp").forward(request, response);
+		request.getRequestDispatcher("location/search.jsp").forward(request, response);
 		
 	}
 	

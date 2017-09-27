@@ -115,8 +115,7 @@ html, body, h1, h2, h3, h4, h5, h6 {
 
 			<div class="w3-container w3-card-2 w3-white w3-margin-bottom">
 				<h2 class="w3-text-grey w3-padding-16">
-					<i
-						class="fa fa-lightbulb-o fa-fw w3-margin-right w3-xxlarge w3-text-teal">Q&A</i>
+					<i class="fa fa-lightbulb-o fa-fw w3-margin-right w3-xxlarge w3-text-teal">Q&A</i>
 				</h2>
 				<!-- 문의게시판 -->
 				<div class="w3-display-container w3-container">
@@ -128,6 +127,7 @@ html, body, h1, h2, h3, h4, h5, h6 {
 									<th>제목</th>
 									<th>내용</th>
 									<th>ID</th>
+									<th>답변여부</th>
 								</tr>
 								<c:forEach var="question" items="${list}" varStatus="i">
 									<tr>
@@ -135,15 +135,22 @@ html, body, h1, h2, h3, h4, h5, h6 {
 										<td><a id="list">${question.fAQName}</a></td>
 										<td><a id="list">${question.fAQContent}</a></td>
 										<td><a id="list">${question.memberId}</a></td>
+										<c:if test="${empty question.adminId}">
+											<td>확인 불가</td>
+										</c:if>
+										<c:if test="${not empty question.adminId}">
+											<td onclick="one('${root}', '${question.fAQNum}')">확인가능</td>
+										</c:if>
+										
 									</tr>
 								</c:forEach>
 							</table>
-
-
 						</div>
 
 						<br><hr><br>
-						
+						<h2 class="w3-text-grey w3-padding-16">답변</h2>
+						<div id="answer">
+						</div>
 						<br><hr><br>
 					</header>
 				</div>
@@ -157,6 +164,25 @@ html, body, h1, h2, h3, h4, h5, h6 {
 			<!-- End Right Column -->
 		</div>
 	</form>
+	<script type="text/javascript" src="${root}/script/httpRequest.js"></script>
+	<script type="text/javascript">
+		function one(root, fAQNum){
+			alert("안녕하세요");
+			var url = root+"/FAQController";
+			str = "command=anw&fAQNum="+fAQNum
+			alert(str);
+			sendRequest(url, str, callback, "POST");
+		}
+		
+		function callback(){
+			if(httpRequest.readyState ==4 && httpRequest.status == 200){
+				alert(httpRequest.responseText);
+				document.getElementById("answer").innerHTML = httpRequest.responseText;
+			}
+		}
+		
+	
+	</script>
 </body>
 </html>
 

@@ -19,8 +19,8 @@ function sidoCallback(){
 		alert("콜백함수");
 		alert(httpRequest.responseText);
 		
-		document.getElementById("a").innerHTML = httpRequest.responseText;
-		
+		document.getElementById("abc").innerHTML = httpRequest.responseText;
+		meMap();
 	}
 }
 

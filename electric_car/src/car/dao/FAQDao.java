@@ -115,6 +115,31 @@ public class FAQDao {
 		return num;
 		
 	}//end of faqAdd
+
+	public static FAQVO answer(int fAQNum) throws SQLException {
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		FAQVO faq = null;
+		
+		try{
+			con = DBUtil.getConnection();
+			pstmt = con.prepareStatement("select *from faq where faq_num = ?");
+			
+			pstmt.setInt(1, fAQNum);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				faq = new FAQVO(rs.getString("admin_id"), rs.getString("admin_name"), rs.getString("admin_context"));
+			}
+		}finally {
+			DBUtil.close(con, pstmt, rs);
+		}
+		
+		return faq;
+	}
 	
 }//end of FAQDao
 

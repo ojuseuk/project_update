@@ -29,6 +29,8 @@ public class FAQController extends HttpServlet {
 			detail(request,response);
 		}else if(command.equals("FAQAdd")){
 			getAdd(request, response);
+		}else if(command.equals("anw")){
+			getAnw(request, response);
 		}
 		
 	}//end of doGet
@@ -60,6 +62,7 @@ public class FAQController extends HttpServlet {
 		
 	}//end of getList
 */	
+	
 	protected void getAdd(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		
 		HttpSession session = request.getSession(false);
@@ -82,5 +85,27 @@ public class FAQController extends HttpServlet {
 		
 	}
 
+	protected void getAnw(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		int fAQNum = Integer.valueOf(request.getParameter("fAQNum"));
+		String url = "error.jsp";
+//		System.out.println(request.getParameter("fAQNum"));
+		
+		try {
+			FAQVO faq = FAQDao.answer(fAQNum);
+			
+			System.out.println(faq.toString());
+			if(faq != null){
+				url = "answer.jsp";
+				request.setAttribute("faq", faq);
+			}
+			System.out.println(url);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		request.getRequestDispatcher(url).forward(request, response);
+		
+	}
 }
 
